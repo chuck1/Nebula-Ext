@@ -1,25 +1,20 @@
 
-#include <PhysX/core/scene/util/parent.hpp>
+#include <neb/phx/core/scene/util/decl.hpp>
+#include <neb/phx/core/scene/util/parent.hpp>
 
-#include <PhysX/ext/maze/game/map/maze2.hpp>
+#include <neb/ext/maze/game/map/maze2.hpp>
 
-phx::ext::maze::game::map::maze2::maze2(
-		sp::shared_ptr<phx::core::scene::util::parent> parent,
+neb::ext::maze::game::map::maze2::maze2(
+		shared_ptr<neb::phx::core::scene::util::parent> parent,
 		ivec2 size):
-	neb::core::scene::base(parent),
-	neb::core::scene::local(parent),
+	neb::core::core::scene::base(parent),
 	neb::game::map::base(parent),
-	neb::ext::maze::game::map::maze2(parent, size),
-	phx::core::scene::base(parent),
-	phx::core::scene::local(parent),
-	phx::game::map::base(parent)
+	neb::phx::core::scene::base(parent),
+	neb::phx::game::map::base(parent)
 {
-	
 }
-void		phx::ext::maze::game::map::maze2::init() {
-	
-	phx::game::map::base::init();
+void		neb::ext::maze::game::map::maze2::init() {
+	neb::phx::game::map::base::init();
 	neb::ext::maze::game::map::maze2::init();
-
 }
 
