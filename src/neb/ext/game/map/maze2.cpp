@@ -63,4 +63,5 @@ void		neb::ext::maze::game::map::maze2::init() {
 		}
 	}
 }
-
+void		neb::ext::maze::game::map::maze2::release() {
+}
