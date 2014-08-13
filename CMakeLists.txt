@@ -56,4 +56,5 @@ SET(libs ${libs}
 
 cmh_library()
 
+ADD_SUBDIRECTORY(test)
 
