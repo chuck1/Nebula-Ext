@@ -135,8 +135,8 @@ shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dyn
 
 	return actor;	
 }
-weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
-
+weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+	
 	auto actor = sp::make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
 
 	scene->insert(actor);
@@ -194,7 +194,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<
 shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::gfx::window::base> window,
 		shared_ptr<neb::gfx::context::window> context,
-		shared_ptr<neb::phx::core::actor::base>& enemy)
+		shared_ptr<neb::fin::gfx_phx::core::actor::base>& enemy)
 {
 
 	std::cout << "4\n";
@@ -251,7 +251,6 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	cam->actor_ = actor3;
 
-	//auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
 	auto e3 = context->environ_->isEnvironThree();
 	assert(e3);
 
@@ -338,7 +337,7 @@ void						setup_game(
 		shared_ptr<neb::gfx::context::window> context)
 {
 	// scene
-	shared_ptr<neb::phx::core::actor::base> enemy;
+	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 
 	auto scene = create_scene(window, context, enemy);
 
@@ -375,53 +374,13 @@ int			main() {
 	// will be map in a minute...
 	//sp::shared_ptr<phx::core::scene::base> map;
 
-	/*
-	// command
-	// create scene
-	auto cmd_create_scene = sp::make_shared<gal::std::command>();
-
-	cmd_create_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
-		(*term) << "creating scene...";
-		//map = create_maze(window, context1);
-		//map = create_scene(window, context1);
-
-		setup_game(game.lock(), window, context1);
-	};
-
-	app->command_set_->map_["sc"] = cmd_create_scene;
-
-	// create scene
-	auto cmd_create_maze = sp::make_shared<gal::std::command>();
-
-	cmd_create_maze->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
-		(*term) << "creating maze...";
-		game.lock()->scene_ = create_maze(window, context1);
-	};
-
-	app->command_set_->map_["maze"] = cmd_create_maze;
-
-	// destroy scene
-	auto cmd_destroy_scene = sp::make_shared<gal::std::command>();
-
-	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
-		(*term) << "destroying scene...";
-		auto scene = game.lock()->scene_.lock();
-		if(scene) {
-			scene->parent_->erase(scene->i_);
-		}
-		std::stringstream ss;
-		ss << "use count " << scene.use_count();
-		(*term) << ss.str();
-	};
-	
-	app->command_set_->map_["sd"] = cmd_destroy_scene;
-	*/
-	
 	std::cout << "1\n";
 
 	// create drawables
-	//auto scene = create_scene(window, context1);
-
+	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
+	
+	auto scene = create_scene(window, context1, enemy);
+	
 	std::cout << "2\n";
 
 	auto layout = create_layout(window, context2);
