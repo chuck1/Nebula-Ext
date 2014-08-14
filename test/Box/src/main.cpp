@@ -36,135 +36,52 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
-sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
-
-	auto context = sp::make_shared<neb::gfx::context::window>(window);
-
-	window->insert(context);
-
-	context->environ_ = sp::make_shared<neb::gfx::environ::two>(/*context*/);
-
-	context->init();
-
-	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
-
-	return context;
-}
-sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<neb::gfx::window::base> window) {
-	assert(window);
-
-	auto context = sp::make_shared<neb::gfx::context::window>(window);
-	assert(context);
-
-	window->insert(context);
-
-	auto environ = sp::make_shared<neb::gfx::environ::three>(/*context*/);
-	environ->init();
-
-	context->environ_ = environ;
-
-	context->init();
-
-	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
-
-	assert(environ->view_);
-
-	environ->view_->connect(window);
-
-	return context;
-}
-
-sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
+shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 		sp::shared_ptr<neb::gfx::window::base> window,
 		sp::shared_ptr<neb::gfx::context::window> context) {
 
 	auto app = neb::fin::gfx_phx::app::base::global();
-
-	//auto layout = app->neb::gfx::gui::layout::util::parent::cii<neb::gfx::gui::layout::base, neb::app::base>(app);
-
-	auto layout = sp::make_shared<neb::gfx::gui::layout::base>(app);
-
-	app->neb::gfx::gui::layout::util::parent::insert(layout);
+	
+	auto layout = app->createLayout().lock();
 
 	context->environ_->drawable_ = layout;
 
 	layout->connect(window);
 
-	// object
-	auto term = sp::make_shared<neb::gfx::gui::object::terminal>();
-
-	layout->insert(term);
-
-	term->init();
+	layout->createObjectTerminal();
 
 	return layout;
 }
-shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
-
-	auto actor = make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
-
-	scene->insert(actor);
-
+shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+	
+	auto actor = scene->createActorRigidDynamicUninitialized().lock();
+	
 	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
-
-	actor->simulation_.word0 = neb::phx::filter::filter::type::DYNAMIC;
-	actor->simulation_.word1 = neb::phx::filter::filter::RIGID_AGAINST;
-	actor->simulation_.word2 = neb::phx::filter::filter::type::DYNAMIC;
-	actor->simulation_.word3 = neb::phx::filter::filter::type::PROJECTILE;
-
-
-	/*std::cout << "neb base " << actor->isActorBase().get() << std::endl;
-	  std::cout << "phx base " << actor->isPxActorBase().get() << std::endl;
-	  std::cout << "phx rd   " << actor->isPxActorRigidDynamicBase().get() << std::endl;
-
-	  exit(0);*/
-
-
+	
 	actor->init();
 
-	// shape	
-	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
+	// shape
 
-	actor->neb::core::shape::util::parent::insert(shape);
-
-	shape->init();
-
+	auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
+	
 	actor->setupFiltering();
-
-	std::cout << "actor dynamic use count = " << actor.use_count() << std::endl;
 
 	return actor;	
 }
 weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
-	auto actor = sp::make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
-
-	scene->insert(actor);
+	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
+			scene->createActorRigidDynamicUninitialized().lock()
+			);
 
 	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
-
-	actor->simulation_.word0 = neb::phx::filter::filter::type::DYNAMIC;
-	actor->simulation_.word1 = neb::phx::filter::filter::RIGID_AGAINST;
-	actor->simulation_.word2 = neb::phx::filter::filter::type::DYNAMIC;
-	actor->simulation_.word3 = neb::phx::filter::filter::type::PROJECTILE;
-
-	// testing for multiple inheritance
-	//auto test = actor->gal::std::shared::name();
-	//auto test = actor->shared_from_this();
 
 	actor->init();
 
 	// shape	
-	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
-
-	actor->neb::core::shape::util::parent::insert(shape);
-
-	shape->init();
+	auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
 
 	actor->setupFiltering();
-
-	std::cout << "actor dynamic use count = " << actor.use_count() << std::endl;
-
 
 	actor->setGlobalPosition(vec3(0,0,5));
 
@@ -185,7 +102,7 @@ weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(sh
 	control->p_target_ = vec3(0,0,5);
 
 	control->q_target_ = glm::angleAxis(1.5f, vec3(0.0,1.0,0.0));
-
+	
 	return actor;	
 
 
@@ -197,25 +114,11 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::fin::gfx_phx::core::actor::base>& enemy)
 {
 
-	std::cout << "4\n";
-
 	auto app = neb::fin::gfx_phx::app::base::global();
 	assert(app);
+	
 
-	std::cout << "5\n";
-
-	auto scene = make_shared<neb::fin::gfx_phx::core::scene::base>(app);
-	assert(scene);
-
-	std::cout << "6\n";
-
-	app->neb::core::core::scene::util::parent::insert(scene);
-
-	std::cout << "7\n";
-
-	scene->init();
-
-	std::cout << "8\n";
+	auto scene = app->createScene().lock();
 
 	// actors
 	scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
@@ -247,7 +150,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
+	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_, actor3);
 
 	cam->actor_ = actor3;
 
@@ -262,7 +165,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	app->neb::phx::game::game::util::parent::insert(game);
 
 	// ai
-	enemy = create_actor_ai(scene).lock();
+	enemy = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(create_actor_ai(scene).lock());
 
 	// weapon
 	enemy->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
@@ -303,20 +206,11 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 
 	context->environ_->drawable_ = map;
 
-
 	// camera
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
-
-	cam->actor_ = actor3;
-
-	auto e3 = dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
-	assert(e3);
-
-	e3->view_ = cam;
-
+	context->environ_->isEnvironThree()->createViewRidealong(actor3);
 
 	return map;
 }
@@ -364,33 +258,20 @@ int			main() {
 	window->init();
 
 	// context
-	auto context1 = create_context_three(window);
-	auto context2 = create_context_two(window);
-
+	auto context1 = window->createContextThree().lock();
+	auto context2 = window->createContextTwo().lock();
 
 	// game
 	auto game = create_game();
-
-	// will be map in a minute...
-	//sp::shared_ptr<phx::core::scene::base> map;
-
-	std::cout << "1\n";
 
 	// create drawables
 	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 	
 	auto scene = create_scene(window, context1, enemy);
 	
-	std::cout << "2\n";
-
 	auto layout = create_layout(window, context2);
 
-	std::cout << "3\n";
-
-	// loop
-
 	app->loop();
-
 }
 
 
