@@ -24,6 +24,10 @@ FIND_PACKAGE(Nebula COMPONENTS
 	final
 	REQUIRED)
 
+FIND_PACKAGE(Boost 1.55 COMPONENTS
+	python
+	REQUIRED)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 INCLUDE_DIRECTORIES("/usr/include/python2.7")
