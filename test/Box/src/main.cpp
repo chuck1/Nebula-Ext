@@ -152,14 +152,19 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_, actor3);
+/*	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_, actor3);
 
 	cam->actor_ = actor3;
 
 	auto e3 = context->environ_->isEnvironThree();
 	assert(e3);
 
-	e3->view_ = cam;
+	e3->view_ = cam;*/
+
+
+	context->environ_->isEnvironThree()->createViewRidealong(actor3);
+
+
 
 	// game
 	auto game(make_shared<neb::phx::game::game::base>());
@@ -264,13 +269,15 @@ int			main() {
 	auto context2 = window->createContextTwo().lock();
 
 	// game
-	auto game = create_game();
+	auto game = create_game().lock();
 
 	// create drawables
-	shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
+	//shared_ptr<neb::fin::gfx_phx::core::actor::base> enemy;
 	
-	auto scene = create_scene(window, context1, enemy);
+	//auto scene = create_scene(window, context1, enemy);
 	
+	setup_game(game, window, context1);
+
 	auto layout = create_layout(window, context2);
 
 	app->loop();
