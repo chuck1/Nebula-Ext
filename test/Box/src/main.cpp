@@ -4,17 +4,17 @@
 #include <gal/console/base.hpp>
 
 #include <neb/core/app/__base.hpp>
-#include <neb/core/actor/base.hpp>
+#include <neb/core/core/actor/base.hpp>
 #include <neb/core/util/wrapper.hpp>
-#include <neb/core/light/base.hpp>
-#include <neb/core/scene/base.hpp>
-#include <neb/core/shape/base.hpp>
-#include <neb/core/actor/base.hpp>
+#include <neb/core/core/light/base.hpp>
+#include <neb/core/core/scene/base.hpp>
+#include <neb/core/core/shape/base.hpp>
+#include <neb/core/core/actor/base.hpp>
 
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/three.hpp>
-#include <neb/gfx/GUI/Object/terminal.hh>
+#include <neb/gfx/gui/object/terminal.hh>
 #include <neb/gfx/Camera/View/ridealong.hh>
 
 #include <neb/core/game/map/base.hpp>
@@ -58,7 +58,7 @@ shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shar
 			scene->createActorRigidDynamicUninitialized().lock()
 			);
 	
-	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
 	
 	actor->init();
 
@@ -76,7 +76,7 @@ weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(sh
 			scene->createActorRigidDynamicUninitialized().lock()
 			);
 
-	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
 
 	actor->init();
 
