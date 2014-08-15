@@ -54,7 +54,9 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 }
 shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
-	auto actor = scene->createActorRigidDynamicUninitialized().lock();
+	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
+			scene->createActorRigidDynamicUninitialized().lock()
+			);
 	
 	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
 	

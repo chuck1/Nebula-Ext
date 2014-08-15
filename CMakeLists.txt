@@ -4,8 +4,6 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 PROJECT(nebula_ext)
 
-SET(nebula_ext_STATIC TRUE)
-
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(PhysX)
@@ -58,7 +56,7 @@ SET(libs ${libs}
 	Xcursor
 	)
 
-cmh_library()
+cmh_static_library()
 
 ADD_SUBDIRECTORY(test)
 
