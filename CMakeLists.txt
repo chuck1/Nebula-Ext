@@ -60,3 +60,7 @@ cmh_static_library()
 
 ADD_SUBDIRECTORY(test)
 
+set(CPACK_GENERATOR "DEB")
+include(CPack)
+
+
