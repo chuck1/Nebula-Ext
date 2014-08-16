@@ -20,6 +20,7 @@ FIND_PACKAGE(Nebula COMPONENTS
 	physx
 	gfx
 	final
+	python
 	REQUIRED)
 
 FIND_PACKAGE(Boost 1.55 COMPONENTS
@@ -54,6 +55,7 @@ SET(libs ${libs}
 	Xrandr
 	Xi
 	Xcursor
+	Xxf86vm
 	)
 
 cmh_static_library()

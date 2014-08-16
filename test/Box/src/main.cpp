@@ -86,7 +86,8 @@ shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(std:
 	}
 	return actor;
 }
-weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(
+		std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
 	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicUninitialized().lock()
@@ -137,8 +138,8 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// actors
 	
-	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "/nfs/stak/students/r/rymalc/Documents/Pictures/crab.png");
-	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "/nfs/stak/students/r/rymalc/Documents/Pictures/norm.png");
+	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "/home/charles/Pictures/crab.png");
+	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "/home/charles/Pictures/norm.png");
 
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
