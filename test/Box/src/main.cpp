@@ -52,23 +52,36 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
-	
+shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene, neb::core::pose pose, double size,
+		const char * texture_filename)
+{
 	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicUninitialized().lock()
 			);
-	
+
+	actor->pose_ = pose;
+
 	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
 	
 	actor->init();
 
 	// shape
 
-	auto shape = actor->createShapeCube(neb::core::pose(), 1.0);
+	auto shape = dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(
+			actor->createShapeCube(neb::core::pose(), size).lock()
+			);
 	
 	actor->setupFiltering();
 
-	return actor;	
+	// texture
+	if(texture_filename) {
+
+		shape->mesh_->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
+
+		shape->mesh_->texture_.reset(new neb::gfx::texture);
+		shape->mesh_->texture_->load_png(texture_filename);
+	}
+	return actor;
 }
 weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
@@ -106,9 +119,6 @@ weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(sh
 	control->q_target_ = glm::angleAxis(1.5f, vec3(0.0,1.0,0.0));
 	
 	return actor;	
-
-
-
 }
 shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::gfx::window::base> window,
@@ -123,7 +133,11 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	auto scene = app->createScene().lock();
 
 	// actors
-	scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
+	
+	//create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, 0);
+	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "/nfs/stak/students/r/rymalc/Documents/Pictures/crab.png");
+	//scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
+
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 5, 0, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
@@ -136,7 +150,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
-	auto actor3 = create_actor_dynamic(scene);
+	auto actor3 = create_actor_dynamic(scene, neb::core::pose(), 1.0, 0);
 	actor3->setGlobalPosition(vec3(0,0,0));
 
 	// weapon
@@ -199,7 +213,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 	map->init();
 
 	// player's actor
-	auto actor3 = create_actor_dynamic(map);
+	auto actor3 = create_actor_dynamic(map, neb::core::pose(), 1.0, 0);
 	actor3->setGlobalPosition(vec3(0,0,0));
 
 	// weapon
