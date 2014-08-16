@@ -22,7 +22,7 @@ neb::ext::maze::game::map::maze2::maze2(
 }
 void		neb::ext::maze::game::map::maze2::init() {
 	
-	auto self(sp::dynamic_pointer_cast<neb::ext::maze::game::map::maze2>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::maze2>(shared_from_this()));
 
 	// insert a spawn point at origin
 	// and init scene
@@ -42,7 +42,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 		
 		auto actor = createActorRigidStaticCube(pose, width);
 		
-		//auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, sp::shared_ptr<neb::core::scene::local>>(self);
+		//auto actor = neb::core::actor::util::parent::cii<neb::core::actor::rigidstatic::local, std::shared_ptr<neb::core::scene::local>>(self);
 		
 		//auto shape = sp::make_shared<neb::core::shape::box>(actor);
 		

@@ -13,7 +13,7 @@ namespace phx { namespace ext { namespace maze { namespace game { namespace map 
 	{
 		public:
 			maze2(
-					sp::shared_ptr<phx::core::scene::util::parent> parent,
+					std::shared_ptr<phx::core::scene::util::parent> parent,
 					ivec2 size);
 
 			virtual void		init();

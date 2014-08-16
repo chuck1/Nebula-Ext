@@ -37,8 +37,8 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
 shared_ptr<neb::gfx::gui::layout::base>	create_layout(
-		sp::shared_ptr<neb::gfx::window::base> window,
-		sp::shared_ptr<neb::gfx::context::window> context) {
+		std::shared_ptr<neb::gfx::window::base> window,
+		std::shared_ptr<neb::gfx::context::window> context) {
 
 	auto app = neb::fin::gfx_phx::app::base::global();
 	
@@ -52,8 +52,8 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene, neb::core::pose pose, double size,
-		const char * texture_filename)
+shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene, neb::core::pose pose, double size,
+		const char * texture_filename, const char * normal_map_filename = 0)
 {
 	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicUninitialized().lock()
@@ -75,15 +75,18 @@ shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shar
 
 	// texture
 	if(texture_filename) {
-
 		shape->mesh_->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
 
 		shape->mesh_->texture_.reset(new neb::gfx::texture);
 		shape->mesh_->texture_->load_png(texture_filename);
 	}
+	if(normal_map_filename) {
+		shape->mesh_->normal_map_.reset(new neb::gfx::texture);
+		shape->mesh_->normal_map_->load_png(normal_map_filename);
+	}
 	return actor;
 }
-weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
 	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
 			scene->createActorRigidDynamicUninitialized().lock()
@@ -134,17 +137,15 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// actors
 	
-	//create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, 0);
 	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "/nfs/stak/students/r/rymalc/Documents/Pictures/crab.png");
-	//scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
+	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "/nfs/stak/students/r/rymalc/Documents/Pictures/norm.png");
 
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 5, 0, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
 	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
 
 	// testing for multiple inheritance
-	auto test = static_cube5->gal::std::shared::name();
+	auto test = static_cube5->gal::itf::shared::name();
 
 
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
