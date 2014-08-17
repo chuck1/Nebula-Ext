@@ -1,15 +1,15 @@
-PROJECT(Box)
+PROJECT(box)
 
 link_exe()
 
-SET(CPACK_GENERATOR "rpm")
-SET(CPACK_RPM_PACKAGE_SUMMARY "unknown")
-SET(CPACK_RPM_PACKAGE_NAME "unknown")
-SET(CPACK_RPM_PACKAGE_VERSION 2)
-SET(CPACK_RPM_PACKAGE_RELEASE "unknown")
-SET(CPACK_RPM_PACKAGE_LICENSE "unknown")
-SET(CPACK_RPM_PACKAGE_GROUP "unknown")
-SET(CPACK_PACKAGE_VENDOR "unknown")
-SET(CPACK_PACKAGE_DESCRIPTION "unknown")
-INCLUDE(CPack)
+
+
+
+add_custom_command(
+	TARGET box POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${nebula_gfx_INCLUDE_DIR}/neb/gfx/media" ${PROJECT_BINARY_DIR}/media)
+
+add_custom_target(
+	box_media
+	DEPENDS ${PROJECT_BINARY_DIR}/media)
 

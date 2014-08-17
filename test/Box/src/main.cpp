@@ -138,8 +138,8 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// actors
 	
-	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "/home/charles/Pictures/crab.png");
-	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "/home/charles/Pictures/norm.png");
+	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "crab.png");
+	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "norm.png");
 
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);

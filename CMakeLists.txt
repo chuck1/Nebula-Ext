@@ -2,67 +2,53 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(nebula_ext)
-
+FIND_PACKAGE(PkgConfig REQUIRED)
 FIND_PACKAGE(CMakeHelper)
-FIND_PACKAGE(glfw)
+
+PROJECT(nebula_ext)
+INCLUDE(../../config.cmake)
+INCLUDE(cmh_build_config)
+
+#INCLUDE(${PROJECT_SOURCE_DIR}/../../external/glfw.cmake)
+
+#pkg_search_module(GLFW REQUIRED glfw3)
+
+FIND_PACKAGE(glfw REQUIRED)
 FIND_PACKAGE(PhysX)
-FIND_PACKAGE(maze)
+FIND_PACKAGE(maze_0_so_db REQUIRED)
 
-FIND_PACKAGE(Galaxy COMPONENTS
-	std
-	log
-	console
-	REQUIRED)
+FIND_PACKAGE(galaxy 0 COMPONENTS std log console REQUIRED)
 
-FIND_PACKAGE(Nebula COMPONENTS
+FIND_PACKAGE(nebula 0 COMPONENTS
 	core
 	physx
 	gfx
+	python
 	final
-	python
 	REQUIRED)
 
-FIND_PACKAGE(Boost 1.55 COMPONENTS
-	python
-	REQUIRED)
+INCLUDE(../../external/glfw.cmake)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
+#FIND_PACKAGE(Boost 1.55 COMPONENTS python REQUIRED)
 
-INCLUDE_DIRECTORIES("/usr/include/python2.7")
-include_directories("/usr/include/freetype2")
-include_directories("./maze/include")
-include_directories("./glm")
+#INCLUDE_DIRECTORIES("/usr/include/python2.7")
+#include_directories("/usr/include/freetype2")
+#include_directories("./glm")
 #include_directories(${physx_INCLUDE_DIR})
 
-link_directories("./maze/Debug")
+ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
-ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
-
-SET(libs ${libs}
-	${Nebula_LIBRARIES}
-	${Galaxy_LIBRARIES}
+SET(libs
+	${nebula_LIBRARIES}
+	${galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
-	glfw3
-	GL
-	GLU
-	GLEW
-	freetype
-	png
-	rt
-	pthread
-	X11
-	Xrandr
-	Xi
-	Xcursor
-	Xxf86vm
+	${glfw_LIBRARIES}
+	${maze_0_so_db_LIBRARIES}
 	)
 
-cmh_static_library()
+INCLUDE(cmh_library)
 
 ADD_SUBDIRECTORY(test)
 
-set(CPACK_GENERATOR "DEB")
-include(CPack)
 
 
