@@ -160,7 +160,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// lights
 	scene->createActorLightPoint(vec3());
-	scene->createActorLightPoint(vec3(10,0,0));
+	//scene->createActorLightPoint(vec3(10,0,0));
 
 	context->environ_->drawable_ = scene;
 
