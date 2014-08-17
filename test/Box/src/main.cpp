@@ -52,40 +52,7 @@ shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene, neb::core::pose pose, double size,
-		const char * texture_filename, const char * normal_map_filename = 0)
-{
-	auto actor = dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
-			scene->createActorRigidDynamicUninitialized().lock()
-			);
 
-	actor->pose_ = pose;
-
-	actor->flag_.set(neb::core::core::actor::util::flag::DESTRUCTIBLE);
-	
-	actor->init();
-
-	// shape
-
-	auto shape = dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(
-			actor->createShapeCube(neb::core::pose(), size).lock()
-			);
-	
-	actor->setupFiltering();
-
-	// texture
-	if(texture_filename) {
-		shape->mesh_->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
-
-		shape->mesh_->texture_.reset(new neb::gfx::texture);
-		shape->mesh_->texture_->load_png(texture_filename);
-	}
-	if(normal_map_filename) {
-		shape->mesh_->normal_map_.reset(new neb::gfx::texture);
-		shape->mesh_->normal_map_->load_png(normal_map_filename);
-	}
-	return actor;
-}
 weak_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_ai(
 		std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 	
@@ -138,10 +105,18 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	// actors
 	
-	create_actor_dynamic(scene, neb::core::pose(vec3(-5, 0, 0)), 1.0, "crab.png");
-	create_actor_dynamic(scene, neb::core::pose(vec3( 5, 0, 0)), 1.0, 0, "norm.png");
+	auto actor1 = scene->createActorRigidDynamicCube(neb::core::pose(vec3( -5, 0, 0)), 1.0).lock();
+	auto shape1 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor1->neb::core::core::shape::util::parent::map_.front());
+	if(shape1) shape1->mesh_->texture_ = neb::gfx::texture::makePNG("crab.png");
+	if(shape1) shape1->mesh_->material_front_.raw_.diffuse_ = neb::Color::color<float>(1,1,1,1);
+	
+	
+	auto actor2 = scene->createActorRigidDynamicCube(neb::core::pose(vec3( 5, 0, 0)), 1.0).lock();
+	auto shape2 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::shape::box>(actor2->neb::core::core::shape::util::parent::map_.front());
+	if(shape2) shape2->mesh_->normal_map_ = neb::gfx::texture::makePNG("norm.png");
 
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
+
+	scene->createActorRigidDynamicCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
 	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
 	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
 
@@ -152,9 +127,9 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
-	auto actor3 = create_actor_dynamic(scene, neb::core::pose(), 1.0, 0);
-	actor3->setGlobalPosition(vec3(0,0,0));
-
+	auto actor3 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
+			scene->createActorRigidDynamicCube(neb::core::pose(vec3( 0, 0, 0)), 1.0).lock());
+	
 	// weapon
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
 
@@ -168,19 +143,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	actor3->create_control(window);
 
-/*	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_, actor3);
-
-	cam->actor_ = actor3;
-
-	auto e3 = context->environ_->isEnvironThree();
-	assert(e3);
-
-	e3->view_ = cam;*/
-
-
 	context->environ_->isEnvironThree()->createViewRidealong(actor3);
-
-
 
 	// game
 	auto game(make_shared<neb::phx::game::game::base>());
@@ -215,8 +178,8 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 	map->init();
 
 	// player's actor
-	auto actor3 = create_actor_dynamic(map, neb::core::pose(), 1.0, 0);
-	actor3->setGlobalPosition(vec3(0,0,0));
+	auto actor3 = std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(
+			map->createActorRigidDynamicCube(neb::core::pose(vec3( 0, 0, 0)), 1.0).lock());
 
 	// weapon
 	auto weap = actor3->createWeaponSimpleProjectile(window, 0.2, 10.0, 5.0);
