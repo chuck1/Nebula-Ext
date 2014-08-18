@@ -48,7 +48,6 @@ SET(libs
 
 INCLUDE(cmh_library)
 
-ADD_SUBDIRECTORY(test)
 
 
 
