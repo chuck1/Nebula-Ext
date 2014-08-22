@@ -38,7 +38,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 	auto lambda = [&] (vec2 v) {
 		
 		neb::core::pose pose;
-		pose.pos_ = vec4(v.x,0,v.y,0);
+		pose.pos_ = vec3(v.x,0,v.y);
 		
 		auto actor = createActorRigidStaticCube(pose, width);
 		
