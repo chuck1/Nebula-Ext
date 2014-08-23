@@ -27,7 +27,7 @@ void		neb::ext::maze::game::map::maze2::init() {
 	// insert a spawn point at origin
 	// and init scene
 	neb::game::map::base::init();
-	
+	neb::fin::gfx_phx::core::scene::base::init();
 	
 	jess::maze::description2 desc(size_);
 	jess::maze::dfs2 m(desc);
