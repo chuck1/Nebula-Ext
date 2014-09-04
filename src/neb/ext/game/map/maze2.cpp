@@ -72,4 +72,10 @@ void		neb::ext::maze::game::map::maze2::init() {
 	}
 }
 void		neb::ext::maze::game::map::maze2::release() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	neb::game::map::base::release();
+	neb::phx::game::map::base::release();
+	neb::fin::gfx_phx::core::scene::base::release();
+
 }
+
