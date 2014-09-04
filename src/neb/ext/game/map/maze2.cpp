@@ -9,7 +9,7 @@
 
 neb::ext::maze::game::map::maze2::maze2(
 		shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent,
-		ivec2 size):
+		glm::ivec3 size):
 	neb::core::core::scene::base(parent),
 	neb::game::map::base(parent),
 	neb::phx::core::scene::base(parent),
@@ -20,8 +20,12 @@ neb::ext::maze::game::map::maze2::maze2(
 {
 	
 }
+
+#define D 3
+
 void		neb::ext::maze::game::map::maze2::init() {
 	
+
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::maze2>(shared_from_this()));
 
 	// insert a spawn point at origin
@@ -29,16 +33,16 @@ void		neb::ext::maze::game::map::maze2::init() {
 	neb::game::map::base::init();
 	neb::fin::gfx_phx::core::scene::base::init();
 	
-	jess::maze::description2 desc(size_);
-	jess::maze::dfs2 m(desc);
+	::maze::description<D> desc(size_);
+	::maze::dfs<D> m(desc);
 	m.run();
 	
 	double width = 3.0;
 	
-	auto lambda = [&] (vec2 v) {
+	auto lambda = [&] (::maze::traits<D>::vec v) {
 		
 		neb::core::pose pose;
-		pose.pos_ = vec3(v.x,0,v.y);
+		pose.pos_ = v;
 		
 		auto actor = createActorRigidStaticCube(pose, width);
 		
@@ -55,12 +59,16 @@ void		neb::ext::maze::game::map::maze2::init() {
 		//actor->pose_.pos_ = vec4(v.x,0,v.y,0);
 	};
 
-	for(int i = 0; i < desc.size_.x; ++i) {
-		for(int j = 0; j < desc.size_.y; ++j) {
-			if(!m.get_ispath(ivec2(i,j))) {
-				lambda(vec2(i,j) * (float)width);
-			}
+	for(int i = 0; i < prod<D>(desc.size_); ++i) {
+
+		auto v = ::vector<D>(i, desc.size_);
+
+		if(!m.get_ispath(v)) {
+
+			lambda(::maze::traits<D>::vec(v) * (float)width);
+
 		}
+
 	}
 }
 void		neb::ext::maze::game::map::maze2::release() {

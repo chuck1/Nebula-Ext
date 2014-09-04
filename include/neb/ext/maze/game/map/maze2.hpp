@@ -23,10 +23,10 @@ namespace neb {
 						public:
 							maze2(
 									shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent,
-									ivec2 size);
+									glm::ivec3 size);
 							virtual void		init();
 							virtual void		release();
-							ivec2			size_;
+							glm::ivec3		size_;
 					};
 				}
 			}
