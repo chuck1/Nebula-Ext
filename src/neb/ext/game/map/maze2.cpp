@@ -14,7 +14,6 @@ neb::ext::maze::game::map::maze2::maze2(
 	neb::game::map::base(parent),
 	neb::phx::core::scene::base(parent),
 	neb::phx::game::map::base(parent),
-	neb::gfx::core::scene::base(parent),
 	neb::fin::gfx_phx::core::scene::base(parent),
 	size_(size)
 {
@@ -78,4 +77,13 @@ void		neb::ext::maze::game::map::maze2::release() {
 	neb::fin::gfx_phx::core::scene::base::release();
 
 }
+void		neb::ext::maze::game::map::maze2::step(gal::etc::timestep const & ts)
+{
+	//neb::game::map::base::step(ts);
+	//neb::phx::game::map::base::step(ts);
+	neb::fin::gfx_phx::core::scene::base::step(ts);
+
+}
+
+
 

@@ -26,6 +26,7 @@ namespace neb {
 									glm::ivec3 size);
 							virtual void		init();
 							virtual void		release();
+							virtual void		step(gal::etc::timestep const &);
 							glm::ivec3		size_;
 					};
 				}
