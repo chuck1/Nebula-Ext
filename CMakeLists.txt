@@ -40,10 +40,10 @@ ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 SET(libs
 	${nebula_LIBRARIES}
 	${galaxy_LIBRARIES}
-	${Boost_LIBRARIES}
 	${glfw_LIBRARIES}
 	${maze_0_so_db_LIBRARIES}
 	)
+
 
 INCLUDE(cmh_library)
 
