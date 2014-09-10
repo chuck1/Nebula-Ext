@@ -88,6 +88,8 @@ void		neb::ext::maze::game::map::base::init() {
 		p[d] = (float)desc.size_[0];
 		createActorRigidStaticCuboid(neb::core::pose(p * width), s * width);
 	}
+
+	createActorLightPoint(glm::vec3(0,0,10));
 }
 void		neb::ext::maze::game::map::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;

@@ -56,6 +56,8 @@ void		neb::ext::maze::game::map::base::init() {
 
 	actor->createShapeHeightField(neb::core::core::shape::HeightField::desc());
 
+	// light
+	createActorLightPoint(glm::vec3(0,0,10));
 }
 void		neb::ext::maze::game::map::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
