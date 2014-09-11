@@ -12,7 +12,7 @@
 typedef neb::fin::gfx_phx::core::scene::base	T0;
 typedef neb::ext::maze::game::map::base		T1;
 
-extern "C" T0*	scene_create(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent)
+extern "C" T0*	scene_create()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return new T1(parent);
@@ -36,23 +36,26 @@ neb::ext::maze::game::map::base::base(
 
 #define D 3
 
-void		neb::ext::maze::game::map::base::init() {
+void		neb::ext::maze::game::map::base::init(parent_t * const & p)
+{
 	
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
+	
+	// init scene
+	neb::game::map::base::init(p);
+	neb::fin::gfx_phx::core::scene::base::init(p);
+
 
 	// insert a spawn point at origin
-	// and init scene
-	neb::game::map::base::init();
-	neb::fin::gfx_phx::core::scene::base::init();
-
+	// ?
 
 	// create heightfield
 	
 	auto actor = createActorRigidStaticUninitialized().lock();
 	actor->pose_.pos_ = glm::vec3(0,0,-20);
-	actor->init();
+	actor->init(this);
 
 	actor->createShapeHeightField(neb::core::core::shape::HeightField::desc());
 

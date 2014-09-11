@@ -21,10 +21,10 @@ namespace neb {
 						virtual public neb::fin::gfx_phx::core::scene::base
 					{
 						public:
-							base(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
+							base();
 							virtual ~base() {}
 									
-							virtual void		init();
+							virtual void		init(parent_t * const & p);
 							virtual void		release();
 							virtual void		step(gal::etc::timestep const &);
 					};
