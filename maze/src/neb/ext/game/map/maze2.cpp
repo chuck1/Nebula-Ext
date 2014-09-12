@@ -10,10 +10,10 @@
 typedef neb::fin::gfx_phx::core::scene::base	T0;
 typedef neb::ext::maze::game::map::base		T1;
 
-extern "C" T0*	scene_create(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent)
+extern "C" T0*	scene_create()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	return new T1(parent);
+	return new T1;
 }
 extern "C" void	scene_destroy(T0* t)
 {
@@ -21,13 +21,7 @@ extern "C" void	scene_destroy(T0* t)
 	delete t;
 }
 
-neb::ext::maze::game::map::base::base(
-		shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent):
-	neb::core::core::scene::base(parent),
-	neb::game::map::base(parent),
-	neb::phx::core::scene::base(parent),
-	neb::phx::game::map::base(parent),
-	neb::fin::gfx_phx::core::scene::base(parent),
+neb::ext::maze::game::map::base::base():
 	size_(6)
 {
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -35,7 +29,7 @@ neb::ext::maze::game::map::base::base(
 
 #define D 3
 
-void		neb::ext::maze::game::map::base::init() {
+void		neb::ext::maze::game::map::base::init(parent_t * const & p) {
 	
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
@@ -43,8 +37,8 @@ void		neb::ext::maze::game::map::base::init() {
 
 	// insert a spawn point at origin
 	// and init scene
-	neb::game::map::base::init();
-	neb::fin::gfx_phx::core::scene::base::init();
+	neb::game::map::base::init(p);
+	neb::fin::gfx_phx::core::scene::base::init(p);
 	
 	::maze::description<D> desc(size_);
 	::maze::dfs<D> m(desc);
@@ -68,12 +62,12 @@ void		neb::ext::maze::game::map::base::init() {
 	}
 
 	// outer walls
-	glm::vec3 p;
+	glm::vec3 pos;
 	glm::vec3 s;
 
 	for(int d = 0; d < D; d++)
 	{
-		p = glm::vec3(
+		pos = glm::vec3(
 				((float)desc.size_[1] - 1.0) / 2.0,
 				((float)desc.size_[1] - 1.0) / 2.0,
 				((float)desc.size_[2] - 1.0) / 2.0
@@ -83,10 +77,10 @@ void		neb::ext::maze::game::map::base::init() {
 
 		s[d] = 1.0;
 
-		p[d] = -1;
-		createActorRigidStaticCuboid(neb::core::pose(p * width), s * width);
-		p[d] = (float)desc.size_[0];
-		createActorRigidStaticCuboid(neb::core::pose(p * width), s * width);
+		pos[d] = -1;
+		createActorRigidStaticCuboid(neb::core::pose(pos * width), s * width);
+		pos[d] = (float)desc.size_[0];
+		createActorRigidStaticCuboid(neb::core::pose(pos * width), s * width);
 	}
 
 	createActorLightPoint(glm::vec3(0,0,10));
@@ -94,7 +88,6 @@ void		neb::ext::maze::game::map::base::init() {
 void		neb::ext::maze::game::map::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::game::map::base::release();
-	neb::phx::game::map::base::release();
 	neb::fin::gfx_phx::core::scene::base::release();
 
 }

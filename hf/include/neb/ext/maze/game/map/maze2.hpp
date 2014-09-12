@@ -3,8 +3,6 @@
 
 #include <neb/core/game/map/base.hpp>
 
-#include <neb/phx/game/map/base.hpp>
-
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 
 namespace neb {
@@ -17,7 +15,6 @@ namespace neb {
 					 */
 					class base:
 						virtual public neb::game::map::base,
-						virtual public neb::phx::game::map::base,
 						virtual public neb::fin::gfx_phx::core::scene::base
 					{
 						public:

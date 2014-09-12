@@ -15,7 +15,7 @@ typedef neb::ext::maze::game::map::base		T1;
 extern "C" T0*	scene_create()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	return new T1(parent);
+	return new T1;
 }
 extern "C" void	scene_destroy(T0* t)
 {
@@ -23,13 +23,7 @@ extern "C" void	scene_destroy(T0* t)
 	delete t;
 }
 
-neb::ext::maze::game::map::base::base(
-		shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent):
-	neb::core::core::scene::base(parent),
-	neb::game::map::base(parent),
-	neb::phx::core::scene::base(parent),
-	neb::phx::game::map::base(parent),
-	neb::fin::gfx_phx::core::scene::base(parent)
+neb::ext::maze::game::map::base::base()
 {
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
@@ -62,12 +56,12 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	// light
 	createActorLightPoint(glm::vec3(0,0,10));
 }
-void		neb::ext::maze::game::map::base::release() {
+void		neb::ext::maze::game::map::base::release()
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	neb::game::map::base::release();
-	neb::phx::game::map::base::release();
-	neb::fin::gfx_phx::core::scene::base::release();
 
+	neb::game::map::base::release();
+	neb::fin::gfx_phx::core::scene::base::release();
 }
 void		neb::ext::maze::game::map::base::step(gal::etc::timestep const & ts)
 {
