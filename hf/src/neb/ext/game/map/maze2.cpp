@@ -23,7 +23,8 @@ extern "C" void	scene_destroy(T0* t)
 	delete t;
 }
 
-neb::ext::maze::game::map::base::base()
+neb::ext::maze::game::map::base::base():
+	init_hf_(false)
 {
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
@@ -46,15 +47,20 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	// ?
 
 	// create heightfield
-	
-	auto actor = createActorRigidStaticUninitialized().lock();
-	actor->pose_.pos_ = glm::vec3(0,0,-20);
-	actor->init(this);
 
-	actor->createShapeHeightField(neb::core::core::shape::HeightField::desc());
+	if(!init_hf_)
+	{
+		auto actor = createActorRigidStaticUninitialized().lock();
+		actor->pose_.pos_ = glm::vec3(0,0,-20);
+		actor->init(this);
 
-	// light
-	createActorLightPoint(glm::vec3(0,0,10));
+		actor->createShapeHeightField(neb::core::core::shape::HeightField::desc());
+
+		// light
+		createActorLightPoint(glm::vec3(0,0,10));
+
+		init_hf_ = true;
+	}
 }
 void		neb::ext::maze::game::map::base::release()
 {

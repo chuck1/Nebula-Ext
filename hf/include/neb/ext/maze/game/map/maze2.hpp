@@ -24,6 +24,8 @@ namespace neb {
 							virtual void		init(parent_t * const & p);
 							virtual void		release();
 							virtual void		step(gal::etc::timestep const &);
+						private:
+							bool			init_hf_;
 					};
 				}
 			}
