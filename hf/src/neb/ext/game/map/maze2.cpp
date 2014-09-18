@@ -51,14 +51,14 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	if(!init_hf_)
 	{
 		auto actor = createActorRigidStaticUninitialized().lock();
-		actor->pose_.pos_ = glm::vec3(0,0,-20);
+		actor->pose_.pos_ = glm::vec3(0,0,0);
 		actor->init(this);
 
 		neb::core::core::shape::HeightField::desc d;
 		d.w = 50.0;
 		d.h = 50.0;
-		d.r = 113;
-		d.c = 113;
+		d.r = 128;
+		d.c = 128;
 		d.hs = 10.0;
 		d.fc.push_back(0.2);
 		d.fc.push_back(0.2);
@@ -66,8 +66,19 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 		actor->createShapeHeightField(d);
 
 		// light
-		createActorLightPoint(glm::vec3(0,0,10));
-
+		createActorLightPoint(glm::vec3(
+					0.0 * d.w / 2.0,
+					0.0,
+					0.0 * d.h / 2.0));
+/*		createActorLightPoint(glm::vec3(
+					d.w / 2.0,
+					8.0,
+					d.h / 2.0));*/
+/*		createActorLightPoint(glm::vec3(
+					d.w / 2.0,
+					-50.0,
+					d.h / 2.0));
+*/
 		init_hf_ = true;
 	}
 }
