@@ -54,7 +54,16 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 		actor->pose_.pos_ = glm::vec3(0,0,-20);
 		actor->init(this);
 
-		actor->createShapeHeightField(neb::core::core::shape::HeightField::desc());
+		neb::core::core::shape::HeightField::desc d;
+		d.w = 50.0;
+		d.h = 50.0;
+		d.r = 113;
+		d.c = 113;
+		d.hs = 10.0;
+		d.fc.push_back(0.2);
+		d.fc.push_back(0.2);
+		
+		actor->createShapeHeightField(d);
 
 		// light
 		createActorLightPoint(glm::vec3(0,0,10));
