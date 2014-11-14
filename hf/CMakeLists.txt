@@ -9,6 +9,8 @@ PROJECT(nebula_ext_hf)
 INCLUDE(../../../config.cmake)
 INCLUDE(cmh_build_config)
 
+SET(SHARED True)
+
 #INCLUDE(${PROJECT_SOURCE_DIR}/../../external/glfw.cmake)
 
 #pkg_search_module(GLFW REQUIRED glfw3)
@@ -38,11 +40,20 @@ INCLUDE(../../../external/glfw.cmake)
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
 SET(libs
-	#${nebula_LIBRARIES}
+	#nebula_core_0
+	#nebula_physx_0
+	#nebula_python_0
+	#nebula_final_0
+	#galaxy_std_0
+	#galaxy_log_0
+	#galaxy_console_0
+	${nebula_SHARED_LIBRARIES}
 	#${galaxy_LIBRARIES}
 	${glfw_LIBRARIES}
 	)
 
+MESSAGE(STATUS "shared_libs ${shared_libs}")
+MESSAGE(STATUS "libs        ${libs}")
 
 INCLUDE(cmh_library)
 

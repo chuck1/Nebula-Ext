@@ -39,6 +39,13 @@ ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 
 SET(libs
 	#${nebula_LIBRARIES}
+	#nebula_core_0
+	#nebula_physx_0
+	#nebula_python_0
+	#nebula_final_0
+	#galaxy_std_0
+	#galaxy_log_0
+	#galaxy_console_0
 	#${galaxy_LIBRARIES}
 	${glfw_LIBRARIES}
 	maze_0
