@@ -15,7 +15,7 @@ INCLUDE(cmh_build_config)
 
 FIND_PACKAGE(glfw REQUIRED)
 FIND_PACKAGE(PhysX)
-FIND_PACKAGE(maze_0_so_db REQUIRED)
+FIND_PACKAGE(maze_0)
 
 FIND_PACKAGE(galaxy 0 COMPONENTS std log console REQUIRED)
 
