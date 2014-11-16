@@ -3,7 +3,7 @@
 
 #include <neb/core/game/map/base.hpp>
 
-#include <neb/fin/gfx_phx/core/scene/base.hpp>
+#include <neb/fin/core/scene/base.hpp>
 
 namespace neb {
 	namespace ext {
