@@ -9,7 +9,7 @@
 
 #include <neb/ext/maze/game/map/maze2.hpp>
 
-typedef neb::fin::gfx_phx::core::scene::base	T0;
+typedef neb::fin::core::scene::base		T0;
 typedef neb::ext::maze::game::map::base		T1;
 
 extern "C" T0*	scene_create()
@@ -39,8 +39,8 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
 	
 	// init scene
-	neb::game::map::base::init(p);
-	neb::fin::gfx_phx::core::scene::base::init(p);
+	nc::game::map::base::init(p);
+	neb::fin::core::scene::base::init(p);
 
 
 	// insert a spawn point at origin
@@ -86,8 +86,8 @@ void		neb::ext::maze::game::map::base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	neb::game::map::base::release();
-	neb::fin::gfx_phx::core::scene::base::release();
+	nc::game::map::base::release();
+	neb::fin::core::scene::base::release();
 }
 void		neb::ext::maze::game::map::base::step(gal::etc::timestep const & ts)
 {
@@ -95,7 +95,7 @@ void		neb::ext::maze::game::map::base::step(gal::etc::timestep const & ts)
 
 	//neb::game::map::base::step(ts);
 	//neb::phx::game::map::base::step(ts);
-	neb::fin::gfx_phx::core::scene::base::step(ts);
+	neb::fin::core::scene::base::step(ts);
 
 }
 

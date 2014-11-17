@@ -1,14 +1,13 @@
 #include <maze/dfs.hpp>
 
-//#include <neb/core/shape/Box.hh>
-//#include <neb/core/actor/RigidStatic/local.hpp>
-
 #include <neb/phx/core/scene/util/parent.hpp>
 
 #include <neb/ext/maze/game/map/maze2.hpp>
 
-typedef neb::fin::gfx_phx::core::scene::base	T0;
+typedef neb::fin::core::scene::base		T0;
 typedef neb::ext::maze::game::map::base		T1;
+
+typedef neb::ext::maze::game::map::base		THIS;
 
 extern "C" T0*	scene_create()
 {
@@ -21,7 +20,7 @@ extern "C" void	scene_destroy(T0* t)
 	delete t;
 }
 
-neb::ext::maze::game::map::base::base():
+THIS::base():
 	size_(6)
 {
 		std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -29,16 +28,16 @@ neb::ext::maze::game::map::base::base():
 
 #define D 3
 
-void		neb::ext::maze::game::map::base::init(parent_t * const & p) {
-	
+void		THIS::init(parent_t * const & p)
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
-	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<THIS>(shared_from_this()));
 
 	// insert a spawn point at origin
 	// and init scene
-	neb::game::map::base::init(p);
-	neb::fin::gfx_phx::core::scene::base::init(p);
+	nc::game::map::base::init(p);
+	neb::fin::core::scene::base::init(p);
 	
 	::maze::description<D> desc(size_);
 	::maze::dfs<D> m(desc);
@@ -47,7 +46,7 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p) {
 	float width = 5.0;
 	
 	auto lambda = [&] (::maze::traits<D>::vec v) {
-		auto actor = createActorRigidStaticCube(neb::core::pose(v), width);
+		auto actor = createActorRigidStaticCube(neb::core::math::pose(v), width);
 	};
 	
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
@@ -78,26 +77,26 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p) {
 		s[d] = 1.0;
 
 		pos[d] = -1;
-		createActorRigidStaticCuboid(neb::core::pose(pos * width), s * width);
+		createActorRigidStaticCuboid(neb::core::math::pose(pos * width), s * width);
 		pos[d] = (float)desc.size_[0];
-		createActorRigidStaticCuboid(neb::core::pose(pos * width), s * width);
+		createActorRigidStaticCuboid(neb::core::math::pose(pos * width), s * width);
 	}
 
 	createActorLightPoint(glm::vec3(0,0,10));
 }
-void		neb::ext::maze::game::map::base::release() {
+void		THIS::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	neb::game::map::base::release();
-	neb::fin::gfx_phx::core::scene::base::release();
+	nc::game::map::base::release();
+	neb::fin::core::scene::base::release();
 
 }
-void		neb::ext::maze::game::map::base::step(gal::etc::timestep const & ts)
+void		THIS::step(gal::etc::timestep const & ts)
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	//neb::game::map::base::step(ts);
 	//neb::phx::game::map::base::step(ts);
-	neb::fin::gfx_phx::core::scene::base::step(ts);
+	neb::fin::core::scene::base::step(ts);
 
 }
 
