@@ -24,6 +24,7 @@ FIND_PACKAGE(galaxy 0 COMPONENTS std log console REQUIRED)
 FIND_PACKAGE(nebula 0 COMPONENTS
 	core
 	physx
+	gfx
 	python
 	final
 	REQUIRED)
