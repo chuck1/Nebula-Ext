@@ -39,9 +39,11 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
 	
 	// init scene
-	nc::game::map::base::init(p);
-	neb::fin::core::scene::base::init(p);
-
+	nc::game::map::base::__init(p);
+	neb::gfx::core::scene::base::__init(p);
+	neb::phx::core::scene::base::__init(p);
+	neb::fin::core::scene::base::__init(p);
+	neb::core::core::scene::base::__init(p);
 
 	// insert a spawn point at origin
 	// ?
