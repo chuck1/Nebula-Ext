@@ -43,7 +43,7 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	neb::gfx::core::scene::base::__init(p);
 	neb::phx::core::scene::base::__init(p);
 	neb::fin::core::scene::base::__init(p);
-	neb::core::core::scene::base::__init(p);
+	neb::fnd::core::scene::base::__init(p);
 
 	// insert a spawn point at origin
 	// ?
@@ -56,7 +56,7 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 		actor->pose_.pos_ = glm::vec3(0,0,0);
 		actor->init(this);
 
-		neb::core::core::shape::HeightField::desc d;
+		neb::fnd::core::shape::HeightField::desc d;
 		d.w = 50.0;
 		d.h = 50.0;
 		d.r = 128;

@@ -46,7 +46,7 @@ void		THIS::init(parent_t * const & p)
 	float width = 5.0;
 	
 	auto lambda = [&] (::maze::traits<D>::vec v) {
-		auto actor = createActorRigidStaticCube(neb::core::math::pose(v), width);
+		auto actor = createActorRigidStaticCube(neb::fnd::math::pose(v), width);
 	};
 	
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
@@ -77,9 +77,9 @@ void		THIS::init(parent_t * const & p)
 		s[d] = 1.0;
 
 		pos[d] = -1;
-		createActorRigidStaticCuboid(neb::core::math::pose(pos * width), s * width);
+		createActorRigidStaticCuboid(neb::fnd::math::pose(pos * width), s * width);
 		pos[d] = (float)desc.size_[0];
-		createActorRigidStaticCuboid(neb::core::math::pose(pos * width), s * width);
+		createActorRigidStaticCuboid(neb::fnd::math::pose(pos * width), s * width);
 	}
 
 	createActorLightPoint(glm::vec3(0,0,10));
