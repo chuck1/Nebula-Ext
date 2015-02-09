@@ -39,7 +39,7 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
 	
 	// init scene
-	nc::game::map::base::__init(p);
+	neb::fnd::game::map::base::__init(p);
 	neb::gfx::core::scene::base::__init(p);
 	neb::phx::core::scene::base::__init(p);
 	neb::fin::core::scene::base::__init(p);
@@ -88,7 +88,7 @@ void		neb::ext::maze::game::map::base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	nc::game::map::base::release();
+	neb::fnd::game::map::base::release();
 	neb::fin::core::scene::base::release();
 }
 void		neb::ext::maze::game::map::base::step(gal::etc::timestep const & ts)

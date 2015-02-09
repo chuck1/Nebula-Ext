@@ -36,7 +36,7 @@ void		THIS::init(parent_t * const & p)
 
 	// insert a spawn point at origin
 	// and init scene
-	nc::game::map::base::init(p);
+	neb::fnd::game::map::base::init(p);
 	neb::fin::core::scene::base::init(p);
 	
 	::maze::description<D> desc(size_);
@@ -86,7 +86,7 @@ void		THIS::init(parent_t * const & p)
 }
 void		THIS::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	nc::game::map::base::release();
+	neb::fnd::game::map::base::release();
 	neb::fin::core::scene::base::release();
 
 }

@@ -10,7 +10,7 @@ namespace neb { namespace ext { namespace maze { namespace game { namespace map 
 	 *
 	 */
 	class base:
-		virtual public nc::game::map::base,
+		virtual public neb::fnd::game::map::base,
 		virtual public neb::fin::core::scene::base
 	{
 		public:
