@@ -37,7 +37,9 @@ void		neb::ext::maze::game::map::base::init(parent_t * const & p)
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
 	auto self(std::dynamic_pointer_cast<neb::ext::maze::game::map::base>(shared_from_this()));
-	
+
+	setParent(p);
+
 	// init scene
 	neb::fnd::game::map::base::__init(p);
 	neb::gfx::core::scene::base::__init(p);
