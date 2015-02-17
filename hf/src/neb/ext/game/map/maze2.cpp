@@ -47,7 +47,7 @@ void		T1::init(parent_t * const & p)
 	{
 		auto actor = _M_scene->createActorRigidStaticUninitialized().lock();
 		actor->pose_.pos_ = glm::vec3(0,0,0);
-		actor->init(this);
+		actor->init(_M_scene.get());
 
 		neb::fnd::core::shape::HeightField::desc d;
 		d.w = 50.0;
@@ -81,17 +81,13 @@ void		T1::Base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	neb::fnd::game::map::base::release();
-	neb::fin::core::scene::base::release();
+	neb::fnd::game::map::Base::release();
 }
 void		T1::Base::step(gal::etc::timestep const & ts)
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	//neb::game::map::base::step(ts);
-	//neb::phx::game::map::base::step(ts);
-	neb::fin::core::scene::base::step(ts);
-
 }
 
 
