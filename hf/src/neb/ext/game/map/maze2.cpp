@@ -27,16 +27,13 @@ T1::Base():
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void		T1::init(parent_t * const & p)
+void		T1::setup()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
 	auto self(std::dynamic_pointer_cast<T1>(shared_from_this()));
 
-	setParent(p);
-
-	// init scene
-	neb::fnd::game::map::Base::init(p);
+	auto scene = get_scene();
 
 	// insert a spawn point at origin
 	// ?
@@ -45,9 +42,9 @@ void		T1::init(parent_t * const & p)
 
 	if(!init_hf_)
 	{
-		auto actor = _M_scene->createActorRigidStaticUninitialized().lock();
+		auto actor = scene->createActorRigidStaticUninitialized().lock();
 		actor->pose_.pos_ = glm::vec3(0,0,0);
-		actor->init(_M_scene.get());
+		actor->init(scene.get());
 
 		neb::fnd::core::shape::HeightField::desc d;
 		d.w = 50.0;
@@ -61,7 +58,7 @@ void		T1::init(parent_t * const & p)
 		actor->createShapeHeightField(d);
 
 		// light
-		_M_scene->createActorLightPoint(glm::vec3(
+		scene->createActorLightPoint(glm::vec3(
 					0.0 * d.w / 2.0,
 					0.0,
 					0.0 * d.h / 2.0));

@@ -12,7 +12,7 @@ namespace neb { namespace mod { namespace maze {
 		public:
 			Base();
 			virtual ~Base();
-			virtual void		init(parent_t * const & p);
+			virtual void		setup();
 			virtual void		release();
 			virtual void		step(gal::etc::timestep const &);
 			glm::ivec3		size_;

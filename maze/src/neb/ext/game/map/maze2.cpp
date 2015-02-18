@@ -9,32 +9,31 @@
 typedef neb::fnd::game::map::Base		T0;
 typedef neb::mod::maze::Base			T1;
 
-extern "C" T0*	scene_create()
+extern "C" T0*	map_create()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return new T1;
 }
-extern "C" void	scene_destroy(T0* t)
+extern "C" void	map_destroy(T0* t)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	delete t;
 }
 T1::Base():
-	size_(6)
+	size_(3)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void		T1::init(parent_t * const & p)
+T1::~Base()
+{
+}
+void		T1::setup()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-	assert(_M_scene);
+	
+	auto scene = get_scene();
 
 	auto self(std::dynamic_pointer_cast<T1>(shared_from_this()));
-
-	// insert a spawn point at origin
-	// and init scene
-	neb::fnd::game::map::Base::init(p);
 
 	::maze::description<D> desc(size_);
 	::maze::dfs<D> m(desc);
@@ -42,9 +41,12 @@ void		T1::init(parent_t * const & p)
 
 	float width = 5.0;
 
+	glm::vec3 offset(0,0,100);
+
 	auto lambda = [&] (::maze::traits<D>::vec v)
 	{
-		auto actor = _M_scene->createActorRigidStaticCube(neb::fnd::math::pose(v), width);
+		v += offset;
+		auto actor = scene->createActorRigidStaticCube(neb::fnd::math::pose(v), width);
 	};
 
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
@@ -57,7 +59,7 @@ void		T1::init(parent_t * const & p)
 
 		}
 	}
-
+	
 	// outer walls
 	glm::vec3 pos;
 	glm::vec3 s;
@@ -69,18 +71,19 @@ void		T1::init(parent_t * const & p)
 				((float)desc.size_[1] - 1.0) / 2.0,
 				((float)desc.size_[2] - 1.0) / 2.0
 			       );
-
+		
 		s = glm::vec3(desc.size_);
-
+		
 		s[d] = 1.0;
-
+		
 		pos[d] = -1;
-		_M_scene->createActorRigidStaticCuboid(neb::fnd::math::pose(pos * width), s * width);
+		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
+
 		pos[d] = (float)desc.size_[0];
-		_M_scene->createActorRigidStaticCuboid(neb::fnd::math::pose(pos * width), s * width);
+		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
 	}
 
-	_M_scene->createActorLightPoint(glm::vec3(0,0,10));
+	scene->createActorLightPoint(glm::vec3(0,0,10));
 }
 void		T1::release()
 {
