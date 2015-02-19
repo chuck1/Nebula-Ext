@@ -41,11 +41,15 @@ void		T1::setup()
 
 	float width = 5.0;
 
+		
+	//glm::vec3 offset(0,0,-100);
 	glm::vec3 offset(0,0,-100);
 
 	auto lambda = [&] (::maze::traits<D>::vec v)
 	{
-		auto actor = scene->createActorRigidStaticCube(neb::fnd::math::pose(v + offset), width);
+		glm::vec3 p = v + offset;
+		printf("mod: p = %16f %16f %16f\n", p.x, p.y, p.z);
+		auto actor = scene->createActorRigidStaticCube(neb::fnd::math::pose(p), width);
 	};
 
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
@@ -77,6 +81,7 @@ void		T1::setup()
 		pos[d] = (float)desc.size_[d];
 		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
 	}
+
 
 	//scene->createActorLightPoint(glm::vec3(0,0,10));
 }
