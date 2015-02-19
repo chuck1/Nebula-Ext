@@ -43,19 +43,25 @@ void		T1::setup()
 
 		
 	//glm::vec3 offset(0,0,-100);
-	glm::vec3 offset(0,0,-100);
+	glm::vec3 offset(0,0,100);
 
-	auto lambda = [&] (::maze::traits<D>::vec v)
+	auto lambda = [&] (::maze::traits<D>::vec p)
 	{
-		glm::vec3 p = v + offset;
 		printf("mod: p = %16f %16f %16f\n", p.x, p.y, p.z);
 		auto actor = scene->createActorRigidStaticCube(neb::fnd::math::pose(p), width);
 	};
 
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
 		auto v = ::vector<D>(i, desc.size_);
-		if(!m.get_ispath(v)) {
-			lambda(::maze::traits<D>::vec(v) * (float)width);
+
+		glm::vec3 pos = ::maze::traits<D>::vec(v) * (float)width + offset;
+
+		if(m.get_ispath(v)) {
+			// path
+			create_spawn(neb::fnd::math::pose(pos));
+		} else {
+			// wall
+			lambda(pos);
 		}
 	}
 	
