@@ -89,7 +89,7 @@ void		T1::setup()
 	}
 
 
-	//scene->createActorLightPoint(glm::vec3(0,0,10));
+	scene->createActorLightPoint(glm::vec3(0,0,10));
 }
 void		T1::release()
 {
