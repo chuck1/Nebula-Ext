@@ -1,9 +1,9 @@
 
-//#include <neb/core/shape/Box.hh>
-//#include <neb/core/actor/RigidStatic/local.hpp>
+//#include <neb/fnd/shape/Box.hh>
+//#include <neb/fnd/actor/RigidStatic/local.hpp>
 
-#include <neb/core/core/actor/base.hpp>
-#include <neb/core/core/shape/HeightField/desc.hpp>
+#include <neb/fnd/core/actor/base.hpp>
+#include <neb/fnd/core/shape/HeightField/desc.hpp>
 
 #include <neb/ext/maze/game/map/maze2.hpp>
 

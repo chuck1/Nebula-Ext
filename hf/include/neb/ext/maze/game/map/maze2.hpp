@@ -1,9 +1,9 @@
 #ifndef NEBULA_MOD_HF_BASE_HPP
 #define NEBULA_MOD_HF_BASE_HPP
 
-#include <neb/core/game/map/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
-#include <neb/core/game/map/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
 namespace neb { namespace mod { namespace hf {
 	/** @brief maze
