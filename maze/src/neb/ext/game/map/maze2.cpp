@@ -41,6 +41,7 @@ void		T1::setup()
 
 	float width = 5.0;
 
+	printf("make inner walls\n");
 		
 	//glm::vec3 offset(0,0,-100);
 	glm::vec3 offset(0,0,100);
@@ -66,6 +67,8 @@ void		T1::setup()
 	}
 	
 	// outer walls
+	printf("make outer walls\n");
+
 	glm::vec3 pos;
 	glm::vec3 s;
 
@@ -88,8 +91,11 @@ void		T1::setup()
 		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
 	}
 
+	printf("create light\n");
 
 	scene->createActorLightPoint(glm::vec3(0,0,10));
+
+	printf("setup complete\n");
 }
 void		T1::release()
 {
