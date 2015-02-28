@@ -49,7 +49,7 @@ void		T1::setup()
 	auto lambda = [&] (::maze::traits<D>::vec p)
 	{
 		printf("mod: p = %16f %16f %16f\n", p.x, p.y, p.z);
-		auto actor = scene->createActorRigidStaticCube(neb::fnd::math::pose(p), width);
+		auto actor = scene->createActorRigidStaticCube(gal::math::pose(p), width);
 	};
 
 	for(int i = 0; i < prod<D>(desc.size_); ++i) {
@@ -59,7 +59,7 @@ void		T1::setup()
 
 		if(m.get_ispath(v)) {
 			// path
-			create_spawn(neb::fnd::math::pose(pos));
+			create_spawn(gal::math::pose(pos));
 		} else {
 			// wall
 			lambda(pos);
@@ -85,10 +85,10 @@ void		T1::setup()
 		s[d] = 1.0;
 		
 		pos[d] = -1;
-		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
+		scene->createActorRigidStaticCuboid(gal::math::pose((pos * width) + offset), s * width);
 
 		pos[d] = (float)desc.size_[d];
-		scene->createActorRigidStaticCuboid(neb::fnd::math::pose((pos * width) + offset), s * width);
+		scene->createActorRigidStaticCuboid(gal::math::pose((pos * width) + offset), s * width);
 	}
 
 	printf("create light\n");
