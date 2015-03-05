@@ -59,10 +59,10 @@ INCLUDE(cmh_library)
 l = Dynamic("nebula_ext_maze")
 
 l.require("maze")
-l.require("galaxy_std")
-l.require("galaxy_log")
-l.require("galaxy_console")
-l.require("nebula_core")
+l.require("galaxy_std", whole=True)
+l.require("galaxy_log", whole=True)
+l.require("galaxy_console", whole=True)
+l.require("nebula_core", whole=True)
 
 l.make()
 
