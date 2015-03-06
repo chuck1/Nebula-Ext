@@ -61,6 +61,12 @@ void		T1::setup()
 			// path
 			printf("create_spawn\n");
 			create_spawn(gal::math::pose(pos));
+
+			// random lights
+			if((rand() % 5) == 0)
+				scene->createActorLightPoint(pos);
+
+
 		} else {
 			// wall
 			lambda(pos);
@@ -103,10 +109,5 @@ void		T1::release()
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::fnd::game::map::Base::release();
 }
-void		T1::step(gal::etc::timestep const & ts)
-{
-	//std::cout << __PRETTY_FUNCTION__ << std::endl;
-	//neb::game::map::base::step(ts);
-	//neb::phx::game::map::base::step(ts);
-}
+
 
