@@ -59,6 +59,7 @@ void		T1::setup()
 
 		if(m.get_ispath(v)) {
 			// path
+			printf("create_spawn\n");
 			create_spawn(gal::math::pose(pos));
 		} else {
 			// wall
