@@ -44,7 +44,7 @@ void		T1::setup()
 	printf("make inner walls\n");
 		
 	//glm::vec3 offset(0,0,-100);
-	glm::vec3 offset(0,0,100);
+	glm::vec3 offset(0,0,0);
 
 	auto lambda = [&] (::maze::traits<D>::vec p)
 	{
