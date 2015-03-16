@@ -41,14 +41,14 @@ void		T1::setup()
 
 	float width = 5.0;
 
-	printf("make inner walls\n");
+	printv(DEBUG, "make inner walls\n");
 		
 	//glm::vec3 offset(0,0,-100);
 	glm::vec3 offset(0,0,0);
 
 	auto lambda = [&] (::maze::traits<D>::vec p)
 	{
-		printf("mod: p = %16f %16f %16f\n", p.x, p.y, p.z);
+		printv(DEBUG, "mod: p = %16f %16f %16f\n", p.x, p.y, p.z);
 		auto actor = scene->createActorRigidStaticCube(gal::math::pose(p), width);
 	};
 
@@ -59,7 +59,7 @@ void		T1::setup()
 
 		if(m.get_ispath(v)) {
 			// path
-			printf("create_spawn\n");
+			printv(DEBUG, "create_spawn\n");
 			create_spawn(gal::math::pose(pos));
 
 			// random lights
@@ -74,7 +74,7 @@ void		T1::setup()
 	}
 	
 	// outer walls
-	printf("make outer walls\n");
+	printv(DEBUG, "make outer walls\n");
 
 	glm::vec3 pos;
 	glm::vec3 s;
@@ -98,11 +98,11 @@ void		T1::setup()
 		scene->createActorRigidStaticCuboid(gal::math::pose((pos * width) + offset), s * width);
 	}
 
-	printf("create light\n");
+	printv(DEBUG, "create light\n");
 
 	scene->createActorLightPoint(glm::vec3(0,0,10));
 
-	printf("setup complete\n");
+	printv(DEBUG, "setup complete\n");
 }
 void		T1::release()
 {
