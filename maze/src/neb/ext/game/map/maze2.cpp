@@ -11,26 +11,25 @@ typedef neb::mod::maze::Base			T1;
 
 extern "C" T0*	map_create()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	return new T1;
 }
 extern "C" void	map_destroy(T0* t)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	delete t;
 }
 T1::Base():
 	size_(3)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 }
 T1::~Base()
 {
+	printv_func(DEBUG);
 }
 void		T1::setup()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	
+	printv_func(DEBUG);
+
 	auto scene = get_scene();
 
 	auto self(std::dynamic_pointer_cast<T1>(shared_from_this()));
