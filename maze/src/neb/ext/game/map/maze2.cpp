@@ -32,7 +32,7 @@ void		T1::setup()
 
 	auto scene = get_scene();
 
-	auto self(std::dynamic_pointer_cast<T1>(shared_from_this()));
+	auto self = shared_from_this();
 
 	::maze::description<D> desc(size_);
 	::maze::dfs<D> m(desc);

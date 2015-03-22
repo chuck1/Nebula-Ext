@@ -31,7 +31,7 @@ void		T1::setup()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
-	auto self(std::dynamic_pointer_cast<T1>(shared_from_this()));
+	auto self = shared_from_this();
 
 	auto scene = get_scene();
 
