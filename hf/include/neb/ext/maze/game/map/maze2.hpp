@@ -10,9 +10,12 @@ namespace neb { namespace mod { namespace hf {
 	 *
 	 */
 	class Base:
+		virtual public gal::enable_shared_from_this<neb::mod::hf::Base>,
 		virtual public neb::fnd::game::map::Base
 	{
 		public:
+			using gal::enable_shared_from_this<neb::mod::hf::Base>::shared_from_this;
+
 			Base();
 			virtual ~Base();
 			virtual void		setup();
