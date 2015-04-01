@@ -1,5 +1,6 @@
+import pbs.classes.Dynamic
 
-l = Dynamic("nebula_ext_maze")
+l = pbs.classes.Dynamic.Dynamic("nebula_ext_maze", self)
 
 l.require("maze")
 l.require("galaxy_std", whole=True)

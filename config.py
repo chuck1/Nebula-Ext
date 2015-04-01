@@ -1,3 +1,3 @@
-include("maze")
-include("hf")
+self.include("maze")
+self.include("hf")
 
