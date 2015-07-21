@@ -20,11 +20,9 @@ extern "C" void	map_destroy(T0* t)
 T1::Base():
 	size_(3)
 {
-	printv_func(DEBUG);
 }
 T1::~Base()
 {
-	printv_func(DEBUG);
 }
 void		T1::setup()
 {
