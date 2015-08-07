@@ -1,6 +1,7 @@
 #include <maze/dfs.hpp>
 
 #include <neb/fnd/core/scene/util/parent.hpp>
+#include <neb/fnd/game/map/util/Parent.hpp>
 
 #include <neb/mod/maze.hpp>
 
