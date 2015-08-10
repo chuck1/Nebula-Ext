@@ -2,6 +2,7 @@
 //#include <neb/fnd/shape/Box.hh>
 //#include <neb/fnd/actor/RigidStatic/local.hpp>
 
+#include <neb/fnd/app/Base10.hpp>
 #include <neb/fnd/game/map/util/Parent.hpp>
 #include <neb/fnd/core/actor/Base.hpp>
 #include <neb/fnd/core/shape/HeightField/desc.hpp>
