@@ -8,7 +8,7 @@ namespace neb { namespace mod { namespace maze {
 	 */
 	class Base:
 		virtual public gal::enable_shared_from_this<neb::mod::maze::Base>,
-		virtual public neb::fnd::game::map::Base
+		virtual public neb::fnd0::game::map::Base
 	{
 		public:
 			using gal::enable_shared_from_this<neb::mod::maze::Base>::shared_from_this;

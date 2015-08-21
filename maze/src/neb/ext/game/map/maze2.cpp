@@ -8,7 +8,7 @@
 
 #define D 3
 
-typedef neb::fnd::game::map::Base		T0;
+typedef neb::fnd0::game::map::Base		T0;
 typedef neb::mod::maze::Base			T1;
 
 extern "C" T0*	map_create()
@@ -106,7 +106,7 @@ void		T1::setup()
 void		T1::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	neb::fnd::game::map::Base::release();
+	neb::fnd0::game::map::Base::release();
 }
 
 

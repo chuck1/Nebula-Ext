@@ -11,7 +11,7 @@
 
 #define D 3
 
-typedef neb::fnd::game::map::Base		T0;
+typedef neb::fnd0::game::map::Base		T0;
 typedef neb::mod::hf::Base			T1;
 
 extern "C" T0*	scene_create()
@@ -48,7 +48,7 @@ void		T1::setup()
 		actor->pose_.pos_ = glm::vec3(0,0,0);
 		actor->init(scene.get());
 
-		neb::fnd::core::shape::HeightField::desc d;
+		neb::fnd0::core::shape::HeightField::desc d;
 		d.w = 50.0;
 		d.h = 50.0;
 		d.r = 128;
@@ -80,7 +80,7 @@ void		T1::Base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	neb::fnd::game::map::Base::release();
+	neb::fnd0::game::map::Base::release();
 }
 void		T1::Base::step(gal::etc::timestep const & ts)
 {
