@@ -1,7 +1,7 @@
 #ifndef NEB_MOD_MAZE_HPP
 #define NEB_MOD_MAZE_HPP
 
-#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd0/game/map/base.hpp>
 
 namespace neb { namespace mod { namespace maze {
 	/** @brief Base
