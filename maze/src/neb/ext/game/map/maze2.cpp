@@ -127,7 +127,7 @@ void		T1::release()
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::fnd0::game::map::Base::release();
 }
-void			T1::Base::v_create_player_actor(
+T1::S_A			T1::Base::v_create_player_actor(
 		std::shared_ptr<neb::fnd0::window::Base> w,
 		std::shared_ptr<neb::fnd0::environ::Base> e)
 {
@@ -149,6 +149,8 @@ void			T1::Base::v_create_player_actor(
 		auto e1 = e->is_fnd_environ_scenedefault();
 		e1->create_view_ridealong(actor_player);
 	}
+
+	return actor_player;
 }
 
 

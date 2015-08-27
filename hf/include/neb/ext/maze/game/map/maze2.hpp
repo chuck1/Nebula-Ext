@@ -21,7 +21,7 @@ namespace neb { namespace mod { namespace hf {
 			virtual void		setup();
 			virtual void		release();
 			virtual void		step(gal::etc::timestep const &);
-			virtual void		v_create_player_actor(
+			virtual S_A		v_create_player_actor(
 					std::shared_ptr<neb::fnd0::window::Base> w,
 					std::shared_ptr<neb::fnd0::environ::Base> e);
 		private:
