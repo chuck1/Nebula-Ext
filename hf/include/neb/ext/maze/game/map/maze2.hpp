@@ -24,6 +24,7 @@ namespace neb { namespace mod { namespace hf {
 			virtual S_A		v_create_player_actor(
 					std::shared_ptr<neb::fnd0::window::Base> w,
 					std::shared_ptr<neb::fnd0::environ::Base> e);
+			virtual void		v_set_player_actor(S_A);
 		private:
 			bool			init_hf_;
 	};

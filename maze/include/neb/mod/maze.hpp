@@ -19,7 +19,10 @@ namespace neb { namespace mod { namespace maze {
 			virtual void		release();
  			virtual S_A		v_create_player_actor(
 					std::shared_ptr<neb::fnd0::window::Base> w,
-		std::shared_ptr<neb::fnd0::environ::Base> e);
+					std::shared_ptr<neb::fnd0::environ::Base> e);
+			virtual void		v_set_player_actor(
+					std::shared_ptr<neb::fnd0::core::actor::Base> a);
+
 			glm::ivec3		size_;
 	};
 }}}
