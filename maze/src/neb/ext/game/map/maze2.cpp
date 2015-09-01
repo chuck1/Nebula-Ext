@@ -161,26 +161,29 @@ void			T1::v_set_player_actor(
 	auto app = get_fnd_app();
 
 	auto w0 = app->get_parent_window()->front();
-
+	
 	if(!w0) return;
 	
 	auto c0 = w0->P_C::front();
 	
 	typedef neb::fnd0::environ::util::Parent P_E;
-
+	
 	auto l = [] (P_E::S s) {
 		return bool(s->is_fnd_environ_scenedefault());
 	};
-
+	
 	auto e0 = c0->P_E::front(l);
-
+	
 	assert(e0);
-
+	
 	auto e1 = e0->is_fnd_environ_scenedefault();
-
+	
 	assert(e1);
-
+	
 	e1->create_view_ridealong(a);
+
+	// weapon
+	a->createWeaponSimpleProjectile(w0.lock(), 0.1, 0.1, 1.0);
 }
 
 
