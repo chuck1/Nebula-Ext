@@ -13,6 +13,8 @@ namespace neb { namespace mod { namespace maze {
 		public:
 			using gal::enable_shared_from_this<neb::mod::maze::Base>::shared_from_this;
 
+			typedef std::shared_ptr<neb::fnd0::core::actor::Base> S_A;
+
 			Base();
 			virtual ~Base();
 			virtual void		setup();
@@ -20,8 +22,7 @@ namespace neb { namespace mod { namespace maze {
  			virtual S_A		v_create_player_actor(
 					std::shared_ptr<neb::fnd0::window::Base> w,
 					std::shared_ptr<neb::fnd0::environ::Base> e);
-			virtual void		v_set_player_actor(
-					std::shared_ptr<neb::fnd0::core::actor::Base> a);
+			virtual void		v_set_player_actor(S_A a);
 
 			glm::ivec3		size_;
 	};

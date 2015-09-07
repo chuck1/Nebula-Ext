@@ -16,6 +16,8 @@ namespace neb { namespace mod { namespace hf {
 		public:
 			using gal::enable_shared_from_this<neb::mod::hf::Base>::shared_from_this;
 
+			typedef gal::weak_ptr<neb::fnd0::core::actor::Base> W_A;
+
 			Base();
 			virtual ~Base();
 			virtual void		setup();
