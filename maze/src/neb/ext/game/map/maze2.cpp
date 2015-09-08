@@ -136,14 +136,16 @@ T1::S_A			T1::Base::v_create_player_actor(
 	neb::fnd0::core::shape::cuboid::Desc sd;
 	
 	auto scene = P_SC::front();
-	
-	auto actor_player = std::dynamic_pointer_cast<neb::fnd0::core::actor::rigidbody::Base>(
-			scene->createActorRigidDynamicCuboid(ad, sd).lock());
-	
+
+	typedef neb::fnd0::core::actor::rigidbody::Base T;
+
+	auto a = std::dynamic_pointer_cast<T>(scene->createActorRigidDynamicCuboid(ad, sd));
+
+	a = flag_.set(neb::fnd0::core::actor::util::flag::E::DESTRUCTIBLE);
+
 	spawn_actor(actor_player);
 	
-	auto weap = actor_player->create_weapon_simpleprojectile(
-			w, 0.2, 10.0, 5.0);
+	auto weap = actor_player->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
 	
 	auto control = actor_player->createControlManual(w);
 
