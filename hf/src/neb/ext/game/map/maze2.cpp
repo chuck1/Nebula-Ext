@@ -54,7 +54,7 @@ void		T1::setup()
 
 	if(!init_hf_)
 	{
-		auto actor = scene->createActorRigidStaticUninitialized().lock();
+		auto actor = scene->createActorRigidStaticUninitialized();
 		actor->pose_.pos_ = glm::vec3(0,0,0);
 		actor->init(scene.lock().get());
 
@@ -106,9 +106,11 @@ T1::S_A			T1::Base::v_create_player_actor(
 	neb::fnd0::core::shape::cuboid::Desc sd;
 
 	auto scene = P_SC::front();
+	
+	typedef neb::fnd0::core::actor::rigidbody::Base T;
 
-	auto actor_player = std::dynamic_pointer_cast<neb::fnd0::core::actor::rigidbody::Base>(
-			scene->createActorRigidDynamicCuboid(ad, sd).lock());
+	auto actor_player = std::dynamic_pointer_cast<T>(
+			scene->createActorRigidDynamicCuboid(ad, sd));
 	
 	spawn_actor(actor_player);
 

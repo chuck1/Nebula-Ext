@@ -141,20 +141,20 @@ T1::S_A			T1::Base::v_create_player_actor(
 
 	auto a = std::dynamic_pointer_cast<T>(scene->createActorRigidDynamicCuboid(ad, sd));
 
-	a = flag_.set(neb::fnd0::core::actor::util::flag::E::DESTRUCTIBLE);
+	a->flag_.set(neb::fnd0::core::actor::util::flag::E::DESTRUCTIBLE);
 
-	spawn_actor(actor_player);
+	spawn_actor(a);
 	
-	auto weap = actor_player->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
+	auto weap = a->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
 	
-	auto control = actor_player->createControlManual(w);
+	auto control = a->createControlManual(w);
 
 	if(e) {
 		auto e1 = e->is_fnd_environ_scenedefault();
-		e1->create_view_ridealong(actor_player);
+		e1->create_view_ridealong(a);
 	}
 
-	return actor_player;
+	return a;
 }
 void			T1::v_set_player_actor(T1::S_A a)
 {
