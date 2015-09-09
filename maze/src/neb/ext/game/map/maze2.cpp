@@ -21,6 +21,8 @@
 #include <neb/fnd0/app/Base10.hpp>
 #include <neb/fnd0/core/scene/util/parent.hpp>
 #include <neb/fnd0/game/map/util/Parent.hpp>
+#include <neb/fnd0/game/weapon/SimpleProjectile.hpp>
+#include <neb/fnd0/game/weapon/desc/SimpleProjectile.hpp>
 
 #include <neb/mod/maze.hpp>
 
@@ -137,15 +139,30 @@ T1::S_A			T1::Base::v_create_player_actor(
 	
 	auto scene = P_SC::front();
 
+
+	// weapon desc
+	typedef nf0::game::weapon::desc::SimpleProjectile WD;
+	std::shared_ptr<WD> wd(new WD);
+	wd->_M_size = 0.2;
+	wd->_M_damage = 10.0;
+	wd->_M_velocity = 5.0;
+
+	ad._M_weapons.push_back(wd);
+
+	// actor
 	typedef neb::fnd0::core::actor::rigidbody::Base T;
 
-	auto a = std::dynamic_pointer_cast<T>(scene->createActorRigidDynamicCuboid(ad, sd));
+	auto a = std::dynamic_pointer_cast<T>(
+			scene->createActorRigidDynamicCuboid(ad, sd, w));
 
 	a->flag_.set(neb::fnd0::core::actor::util::flag::E::DESTRUCTIBLE);
 
 	spawn_actor(a);
 	
-	auto weap = a->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
+	// weapon
+	//auto weap = a->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
+	//printv(INFO, "create player weapon\n");
+	//weap->print_index_table();
 	
 	auto control = a->createControlManual(w);
 
@@ -184,9 +201,15 @@ void			T1::v_set_player_actor(T1::S_A a)
 	
 	e1->create_view_ridealong(a);
 
+
 	// weapon
-	a->create_weapon_simpleprojectile(
-			w0, 0.1, 0.1, 1.0);
+	// NO! created and sent by server
+	//a->create_weapon_simpleprojectile(
+	//		w0, 0.1, 0.1, 1.0);
+	
+	auto weap = a->P_W::front();
+	assert(weap);
+	weap->connect(w0);
 }
 
 

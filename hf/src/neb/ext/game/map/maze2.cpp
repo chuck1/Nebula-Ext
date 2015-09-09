@@ -14,6 +14,7 @@
 
 #include <neb/fnd0/app/Base10.hpp>
 #include <neb/fnd0/game/map/util/Parent.hpp>
+#include <neb/fnd0/game/weapon/desc/SimpleProjectile.hpp>
 #include <neb/fnd0/core/actor/Base.hpp>
 #include <neb/fnd0/core/shape/HeightField/desc.hpp>
 
@@ -109,13 +110,24 @@ T1::S_A			T1::Base::v_create_player_actor(
 	
 	typedef neb::fnd0::core::actor::rigidbody::Base T;
 
+	// weapon desc
+	typedef nf0::game::weapon::desc::SimpleProjectile WD;
+	std::shared_ptr<WD> wd(new WD);
+	wd->_M_size = 0.2;
+	wd->_M_damage = 10.0;
+	wd->_M_velocity = 5.0;
+
+	ad._M_weapons.push_back(wd);
+	
+	// actor
+
 	auto actor_player = std::dynamic_pointer_cast<T>(
-			scene->createActorRigidDynamicCuboid(ad, sd));
+			scene->createActorRigidDynamicCuboid(ad, sd, w));
 	
 	spawn_actor(actor_player);
 
-	auto weap = actor_player->create_weapon_simpleprojectile(
-			w, 0.2, 10.0, 5.0);
+	//auto weap = actor_player->create_weapon_simpleprojectile(
+	//		w, 0.2, 10.0, 5.0);
 	
 	auto control = actor_player->createControlManual(w);
 
