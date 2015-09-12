@@ -57,7 +57,7 @@ void		T1::setup()
 	{
 		auto actor = scene->createActorRigidStaticUninitialized();
 		actor->pose_.pos_ = glm::vec3(0,0,0);
-		actor->init(scene.lock().get());
+		actor->init(scene.get());
 
 		neb::fnd0::core::shape::HeightField::desc d;
 		d.w = 50.0;
