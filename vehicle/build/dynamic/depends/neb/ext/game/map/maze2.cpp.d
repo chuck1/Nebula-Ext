@@ -1,9 +1,5 @@
-/home/chuck/git/nebula/mod/maze/build/dynamic/objects/neb/ext/game/map/maze2.cpp.o: \
- /home/chuck/git/nebula/mod/maze/src/neb/ext/game/map/maze2.cpp \
- /home/chuck/git/nebula/external/maze/include/maze/dfs.hpp \
- /home/chuck/git/nebula/external/maze/include/maze/base.hpp \
- /home/chuck/git/nebula/external/maze/include/maze/description.hpp \
- /home/chuck/git/nebula/external/maze/include/maze/typedef.hpp \
+/home/chuck/git/nebula/mod/vehicle/build/dynamic/objects/neb/ext/game/map/maze2.cpp.o: \
+ /home/chuck/git/nebula/mod/vehicle/src/neb/ext/game/map/maze2.cpp \
  /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/base.hpp \
  /home/chuck/git/nebula/external/Galaxy/components/std/include/gal/object/Child.hpp \
  /home/chuck/git/nebula/external/Galaxy/components/std/include/gal/error/backtrace.hpp \
@@ -197,4 +193,4 @@
  /home/chuck/git/nebula/components/fnd0/build/static/process/include/neb/fnd0/game/weapon/SimpleProjectile.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/weapon/desc/SimpleProjectile.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/weapon/desc/Base.hpp \
- /home/chuck/git/nebula/mod/maze/include/neb/mod/maze.hpp
+ /home/chuck/git/nebula/mod/vehicle/include/neb/mod/vehicle.hpp

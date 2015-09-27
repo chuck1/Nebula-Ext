@@ -4,15 +4,16 @@
 #include <neb/fnd0/context/Window.hpp>
 #include <neb/fnd0/environ/SceneDefault.hpp>
 #include <neb/fnd0/environ/Two.hpp>
+#include <neb/fnd0/net/comm/util/Parent.hpp>
 #include <neb/fnd0/net/client/Base.hpp>
 #include <neb/fnd0/net/msg/Code.hpp>
 #include <neb/fnd0/net/msg/game/game/List.hpp>
 #include <neb/fnd0/core/actor/rigidbody/Base.hpp>
 #include <neb/fnd0/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd0/core/shape/cuboid/desc.hpp>
-
-
-#include <neb/fnd0/app/Base10.hpp>
+#include <neb/fnd0/window/util/Parent.hpp>
+#include <neb/fnd0/window/Base.hpp>
+#include <neb/fnd0/app/Base00.hpp>
 #include <neb/fnd0/game/map/util/Parent.hpp>
 #include <neb/fnd0/game/weapon/desc/SimpleProjectile.hpp>
 #include <neb/fnd0/core/actor/Base.hpp>

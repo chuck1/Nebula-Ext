@@ -82,15 +82,17 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/gfx/environ/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/environ/Single.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/environ/Two.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/util/Parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/itf/Pose.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/Base.hpp \
+ /home/chuck/git/nebula/external/Galaxy/components/std/build/static/process/include/gal/itf/net/communicating.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/client/Info.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/client/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/List.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/Base.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/std/build/static/process/include/gal/itf/net/communicating.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/client/Info.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/server/Info.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/Code.hpp \
  /home/chuck/git/nebula/external/Galaxy/components/std/include/gal/macro/Type.hpp \
@@ -118,7 +120,6 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/util/Cast.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/cast.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/itf/Pose.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/control/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/control/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/base.hpp \
@@ -148,28 +149,22 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/control/rigidbody/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigidbody/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/desc.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/Base10.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/util/Parent.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/util/Parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/source.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/signals.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/util/combiner.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/callback.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/gfx/window/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/Base00.hpp \
  /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/decl.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/__base.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/scroller.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/console/include/gal/console/sstream.hpp \
- /home/chuck/git/nebula/external/Galaxy/components/std/include/gal/type_registry.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/util/Flag.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/server/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/server/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/comm/util/Parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/phx/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/net/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/client/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/util/parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/util/parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/Cast.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/util/Cast.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/base.hpp \
@@ -179,34 +174,17 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/drawable/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gfx/RenderDesc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/glsl/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/phx/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/spawn/util/parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/spawn/base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/spawn/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/ai/util/parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/ai/base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/ai/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/__Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/Cast.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/Cast.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/source.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/signals.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/util/combiner.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/callback.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/gfx/window/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/util/Parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/util/resource/Manager.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/Base00.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/util/parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/trigger/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/Cast.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/weapon/desc/SimpleProjectile.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/weapon/desc/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/HeightField/desc.hpp \
