@@ -155,6 +155,13 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/control/rigidbody/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigidbody/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/desc.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/flag.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/drawable/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gfx/RenderDesc.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/glsl/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/phx/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/net/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/window/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/source.hpp \
@@ -168,14 +175,7 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/phx/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/net/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/parent.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/flag.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/drawable/Base.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gfx/RenderDesc.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/glsl/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/map/util/Parent.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/game/game/util/Cast.hpp \

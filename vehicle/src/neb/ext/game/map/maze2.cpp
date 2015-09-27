@@ -14,6 +14,7 @@
 #include <neb/fnd0/core/actor/rigidbody/Base.hpp>
 #include <neb/fnd0/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd0/core/shape/cuboid/desc.hpp>
+#include <neb/fnd0/core/scene/Base.hpp>
 #include <neb/fnd0/window/util/Parent.hpp>
 #include <neb/fnd0/window/Base.hpp>
 #include <neb/fnd0/app/Base00.hpp>
@@ -69,6 +70,8 @@ void		T1::setup()
 	printv(DEBUG, "create light\n");
 
 	scene->createActorLightPoint(glm::vec3(0,0,0));
+
+	scene->create_actor_vehicle_drive_4w();
 
 	printv(DEBUG, "setup complete\n");
 }
