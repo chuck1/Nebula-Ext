@@ -11,8 +11,10 @@
 #include <neb/fnd0/net/comm/util/Parent.hpp>
 #include <neb/fnd0/net/msg/Code.hpp>
 #include <neb/fnd0/net/msg/game/game/List.hpp>
+#include <neb/fnd0/core/actor/rigiddynamic/Base.hpp>
 #include <neb/fnd0/core/actor/rigidbody/Base.hpp>
 #include <neb/fnd0/core/actor/rigidbody/desc.hpp>
+#include <neb/fnd0/core/actor/vehicle/drive4w/Base.hpp> // neb/fnd0/core/actor/vehicle/drive4w/Base.hpp.in
 #include <neb/fnd0/core/shape/cuboid/desc.hpp>
 #include <neb/fnd0/core/scene/Base.hpp>
 #include <neb/fnd0/window/util/Parent.hpp>
@@ -38,8 +40,7 @@ extern "C" void	map_destroy(T0* t)
 {
 	delete t;
 }
-T1::Base():
-	size_(2)
+T1::Base()
 {
 }
 T1::~Base()
@@ -51,6 +52,8 @@ void		T1::setup()
 
 	auto scene = create_scene();
 
+	scene->set_gravity(glm::vec3(0,0,-0.1));
+
 	auto self = shared_from_this();
 
 	printv(DEBUG, "make inner walls\n");
@@ -61,7 +64,7 @@ void		T1::setup()
 	// outer walls
 	printv(DEBUG, "make outer walls\n");
 	
-	gal::math::pose pose(glm::vec3(0,0,-10));
+	gal::math::pose pose(glm::vec3(0,0,-20));
 
 	glm::vec3 s(100,100,1);
 
@@ -71,7 +74,8 @@ void		T1::setup()
 
 	scene->createActorLightPoint(glm::vec3(0,0,0));
 
-	scene->create_actor_vehicle_drive_4w();
+	_M_veh = std::dynamic_pointer_cast<neb::fnd0::core::actor::vehicle::drive4w::Base>(
+			scene->create_actor_vehicle_drive_4w());
 
 	printv(DEBUG, "setup complete\n");
 }
@@ -118,7 +122,8 @@ T1::S_A			T1::Base::v_create_player_actor(
 
 	if(e) {
 		auto e1 = e->is_fnd_environ_scenedefault();
-		e1->create_view_ridealong(a);
+		//e1->create_view_ridealong(a);
+		e1->create_view_ridealong(_M_veh->_M_actor_rd.lock());
 	}
 
 	return a;

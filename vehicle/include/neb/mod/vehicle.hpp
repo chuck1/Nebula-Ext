@@ -1,6 +1,8 @@
 #ifndef NEB_MOD_MAZE_HPP
 #define NEB_MOD_MAZE_HPP
 
+#include <neb/fnd0/core/actor/util/decl.hpp>
+
 #include <neb/fnd0/game/map/base.hpp>
 
 namespace neb { namespace mod { namespace vehicle {
@@ -14,6 +16,7 @@ namespace neb { namespace mod { namespace vehicle {
 			using gal::enable_shared_from_this<neb::mod::vehicle::Base>::shared_from_this;
 
 			typedef std::shared_ptr<neb::fnd0::core::actor::Base> S_A;
+			typedef std::shared_ptr<neb::fnd0::core::actor::vehicle::drive4w::Base> S_V;
 
 			Base();
 			virtual ~Base();
@@ -23,8 +26,8 @@ namespace neb { namespace mod { namespace vehicle {
 					std::shared_ptr<neb::fnd0::window::Base> w,
 					std::shared_ptr<neb::fnd0::environ::Base> e);
 			virtual void		v_set_player_actor(S_A a);
-
-			glm::ivec3		size_;
+			
+			S_V			_M_veh;
 	};
 }}}
 
