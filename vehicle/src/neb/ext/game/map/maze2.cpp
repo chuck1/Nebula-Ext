@@ -52,7 +52,7 @@ void		T1::setup()
 
 	auto scene = create_scene();
 
-	scene->set_gravity(glm::vec3(0,0,-1.0));
+	scene->set_gravity(glm::vec3(0,1.0,0));
 
 	auto self = shared_from_this();
 
@@ -64,9 +64,9 @@ void		T1::setup()
 	// outer walls
 	printv(DEBUG, "make outer walls\n");
 	
-	gal::math::pose pose(glm::vec3(0,0,-15));
+	gal::math::pose pose(glm::vec3(0,15,0));
 
-	glm::vec3 s(100,100,1);
+	glm::vec3 s(100,1,100);
 
 	scene->createActorRigidStaticCuboid(pose, s);
 
