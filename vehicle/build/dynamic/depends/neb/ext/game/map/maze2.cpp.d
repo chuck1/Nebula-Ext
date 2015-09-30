@@ -114,6 +114,7 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/game/game/List.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/net/msg/Tuple.hpp \
  /home/chuck/git/nebula/external/Galaxy/components/std/include/gal/serialization/serialization.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigiddynamic/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigidbody/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigidactor/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/actor/Base.hpp \

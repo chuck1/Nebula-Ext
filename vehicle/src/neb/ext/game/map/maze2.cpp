@@ -52,7 +52,7 @@ void		T1::setup()
 
 	auto scene = create_scene();
 
-	scene->set_gravity(glm::vec3(0,0,-0.1));
+	scene->set_gravity(glm::vec3(0,0,-1.0));
 
 	auto self = shared_from_this();
 
@@ -64,7 +64,7 @@ void		T1::setup()
 	// outer walls
 	printv(DEBUG, "make outer walls\n");
 	
-	gal::math::pose pose(glm::vec3(0,0,-20));
+	gal::math::pose pose(glm::vec3(0,0,-15));
 
 	glm::vec3 s(100,100,1);
 
@@ -113,17 +113,18 @@ T1::S_A			T1::Base::v_create_player_actor(
 
 	spawn_actor(a);
 	
-	// weapon
-	//auto weap = a->create_weapon_simpleprojectile(w, 0.2, 10.0, 5.0);
-	//printv(INFO, "create player weapon\n");
-	//weap->print_index_table();
+	// control
+	auto control = _M_veh->create_control(w);
 	
-	auto control = a->createControlManual(w);
-
 	if(e) {
 		auto e1 = e->is_fnd_environ_scenedefault();
 		//e1->create_view_ridealong(a);
-		e1->create_view_ridealong(_M_veh->_M_actor_rd.lock());
+		assert(_M_veh);
+		printf("mod veh actor    %p\n", _M_veh.get());
+		auto a1 = _M_veh->_M_actor_rd.lock();
+		printf("mod veh actor_rd %p\n", a1.get());
+		assert(a1);
+		e1->create_view_ridealong(a1);
 	}
 
 	return a;
