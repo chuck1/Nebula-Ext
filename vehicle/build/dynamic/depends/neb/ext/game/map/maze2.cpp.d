@@ -157,6 +157,7 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/actor/rigidbody/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/build/static/process/include/neb/fnd0/core/actor/vehicle/drive4w/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/shape/HeightField/desc.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/flag.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/drawable/Base.hpp \
