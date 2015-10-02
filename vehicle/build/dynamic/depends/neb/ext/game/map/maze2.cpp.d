@@ -171,11 +171,17 @@
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/signals.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/util/combiner.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/input/callback.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/Parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/Parent.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/__Base.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/Cast.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/decl.hpp \
+ /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/Cast.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/gfx/window/Base.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/Base00.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/app/util/Flag.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/layout/util/decl.hpp \
- /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/gui/object/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/timer/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/plug/util/decl.hpp \
  /home/chuck/git/nebula/components/fnd0/include/neb/fnd0/core/scene/util/parent.hpp \
