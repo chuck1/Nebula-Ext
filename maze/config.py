@@ -6,7 +6,7 @@ l.require("maze")
 l.require("galaxy_std", whole=True)
 l.require("galaxy_net", whole=True)
 l.require("galaxy_console", whole=True)
-l.require("nebula_fnd0", whole=True)
+l.require("nebula_fnd0", "dynamic")
 
 l.make()
 

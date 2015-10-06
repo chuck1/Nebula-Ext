@@ -3,16 +3,16 @@ root_dir          = /home/chuck/git/nebula/mod/hf
 src_dir           = /home/chuck/git/nebula/mod/hf/src
 inc_dir           = /home/chuck/git/nebula/mod/hf/include
 build_dir         = /home/chuck/git/nebula/mod/hf/build/dynamic
-inc               = -I/home/chuck/git/nebula/external/Galaxy/components/std/include -I/home/chuck/git/nebula/external/Galaxy/components/std/build/static/process/include -I/home/chuck/git/nebula/external/Galaxy/components/net/include -I/home/chuck/git/nebula/external/Galaxy/components/net/build/static/process/include -I/home/chuck/git/nebula/external/Galaxy/components/console/include -I/home/chuck/git/nebula/external/Galaxy/components/console/build/static/process/include -I/usr/include/python2.7 -I/home/chuck/git/nebula/components/fnd0/include -I/home/chuck/git/nebula/components/fnd0/build/static/process/include -I/home/chuck/git/nebula/mod/hf/include -I/home/chuck/git/nebula/mod/hf/build/dynamic/process/include 
+inc               = -I/home/chuck/git/nebula/external/Galaxy/components/std/include -I/home/chuck/git/nebula/external/Galaxy/components/std/build/static/process/include -I/home/chuck/git/nebula/external/Galaxy/components/net/include -I/home/chuck/git/nebula/external/Galaxy/components/net/build/static/process/include -I/home/chuck/git/nebula/external/Galaxy/components/console/include -I/home/chuck/git/nebula/external/Galaxy/components/console/build/static/process/include -I/usr/include/python2.7 -I/home/chuck/git/nebula/components/fnd0/include -I/home/chuck/git/nebula/components/fnd0/build/dynamic/process/include -I/home/chuck/git/nebula/mod/hf/include -I/home/chuck/git/nebula/mod/hf/build/dynamic/process/include 
 define_str        = -DGLM_FORCE_RADIANS=1 -D_DEBUG=1 -DGLM_FORCE_RADIANS=1 -D_DEBUG=1
 binary            = libnebula_ext_hf.so
 compiler_dir      = /home/chuck/git/pbs
 master_config_dir = /home/chuck/git/nebula
-lib_long_str      = /home/chuck/git/nebula/external/Galaxy/components/std/build/static/libgalaxy_std.a /home/chuck/git/nebula/external/Galaxy/components/net/build/static/libgalaxy_net.a /home/chuck/git/nebula/external/Galaxy/components/console/build/static/libgalaxy_console.a /home/chuck/git/nebula/components/fnd0/build/static/libnebula_fnd0.a
+lib_long_str      = /home/chuck/git/nebula/external/Galaxy/components/std/build/static/libgalaxy_std.a /home/chuck/git/nebula/external/Galaxy/components/net/build/static/libgalaxy_net.a /home/chuck/git/nebula/external/Galaxy/components/console/build/static/libgalaxy_console.a libnebula_fnd0.so
 lib_link_str_whole = 
-lib_link_str_no_whole = -l:/home/chuck/git/nebula/external/Galaxy/components/std/build/static/libgalaxy_std.a -ldl -l:/home/chuck/git/nebula/external/Galaxy/components/net/build/static/libgalaxy_net.a -l:/home/chuck/git/nebula/external/Galaxy/components/console/build/static/libgalaxy_console.a -l:/home/chuck/git/nebula/components/fnd0/build/static/libnebula_fnd0.a
+lib_link_str_no_whole = -l:/home/chuck/git/nebula/external/Galaxy/components/std/build/static/libgalaxy_std.a -ldl -l:/home/chuck/git/nebula/external/Galaxy/components/net/build/static/libgalaxy_net.a -l:/home/chuck/git/nebula/external/Galaxy/components/console/build/static/libgalaxy_console.a -l:libnebula_fnd0.so
 
-lib_dir_str       = -L/home/chuck/git/nebula/external/Galaxy/components/std/build/static -L/home/chuck/git/nebula/external/Galaxy/components/net/build/static -L/home/chuck/git/nebula/external/Galaxy/components/console/build/static -L/home/chuck/git/nebula/components/fnd0/build/static
+lib_dir_str       = -L/home/chuck/git/nebula/external/Galaxy/components/std/build/static -L/home/chuck/git/nebula/external/Galaxy/components/net/build/static -L/home/chuck/git/nebula/external/Galaxy/components/console/build/static -Wl,-rpath,/home/chuck/git/nebula/components/fnd0/build/dynamic
 makefile          = /home/chuck/git/nebula/mod/hf/build/dynamic/Makefile
 project_name      = nebula_ext_hf
 library_type      = dynamic

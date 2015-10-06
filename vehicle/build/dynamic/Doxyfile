@@ -264,7 +264,7 @@ SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration options related to external references
 #---------------------------------------------------------------------------
-TAGFILES               = /home/chuck/git/nebula/external/Galaxy/components/std/build/static/tagfile /home/chuck/git/nebula/external/Galaxy/components/net/build/static/tagfile /home/chuck/git/nebula/external/Galaxy/components/console/build/static/tagfile /home/chuck/git/nebula/components/fnd0/build/static/tagfile
+TAGFILES               = /home/chuck/git/nebula/external/Galaxy/components/std/build/static/tagfile /home/chuck/git/nebula/external/Galaxy/components/net/build/static/tagfile /home/chuck/git/nebula/external/Galaxy/components/console/build/static/tagfile /home/chuck/git/nebula/components/fnd0/build/dynamic/tagfile
 GENERATE_TAGFILE       = /home/chuck/git/nebula/mod/vehicle/build/dynamic/tagfile
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
