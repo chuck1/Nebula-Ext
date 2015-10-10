@@ -141,7 +141,7 @@ T1::S_A			T1::Base::v_create_player_actor(
 
 	if(e) {
 		auto e1 = e->is_fnd_environ_scenedefault();
-		e1->create_view_ridealong(actor_player);
+		e1->create_view_ridealong(actor_player, w);
 	}
 
 	return actor_player;
@@ -162,7 +162,7 @@ void			T1::v_set_player_actor(S_A a)
 
 	auto e1 = e0->is_fnd_environ_scenedefault();
 
-	e1->create_view_ridealong(a);
+	e1->create_view_ridealong(a, w0);
 }
 
 

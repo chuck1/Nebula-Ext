@@ -170,7 +170,7 @@ T1::S_A			T1::Base::v_create_player_actor(
 
 	if(e) {
 		auto e1 = e->is_fnd_environ_scenedefault();
-		e1->create_view_ridealong(a);
+		e1->create_view_ridealong(a, w);
 	}
 
 	return a;
@@ -201,7 +201,7 @@ void			T1::v_set_player_actor(T1::S_A a)
 	
 	assert(e1);
 	
-	e1->create_view_ridealong(a);
+	e1->create_view_ridealong(a, w0);
 
 
 	// weapon

@@ -165,7 +165,7 @@ T1::S_A			T1::Base::v_create_player_actor(
 		auto a1 = _M_veh->_M_actor_rd.lock();
 		printf("mod veh actor_rd %p\n", a1.get());
 		assert(a1);
-		e1->create_view_ridealong(a1);
+		e1->create_view_ridealong(a1, w);
 	}
 
 	return a;
@@ -196,7 +196,7 @@ void			T1::v_set_player_actor(T1::S_A a)
 
 	assert(e1);
 
-	e1->create_view_ridealong(a);
+	e1->create_view_ridealong(a, w0);
 
 
 	// weapon
